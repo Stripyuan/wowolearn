@@ -15,7 +15,7 @@ use jasmine2\dwz\widgets\SearchForm;
 
     <?= $form->field($model, 'username') ?>
 
-    <?php echo $form->field($model, 'phone_number') ?>
+    <?php echo $form->field($model, 'realname') ?>
 
     <?php echo $form->field($model, 'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
         'items' => \backend\models\Admins::STATUS_LABELS

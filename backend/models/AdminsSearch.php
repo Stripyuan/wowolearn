@@ -25,7 +25,7 @@ class AdminsSearch extends Admins
     {
         return [
             [['status'], 'integer'],
-            [['username', 'email', 'phone_number'], 'safe'],
+            [['username', 'email', 'phone_number','realname'], 'safe'],
         ];
     }
 
@@ -71,6 +71,7 @@ class AdminsSearch extends Admins
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'realname', $this->realname])
             ->andFilterWhere(['like', 'phone_number', $this->phone_number]);
 
         return $dataProvider;
