@@ -149,14 +149,6 @@ class StudentsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    protected function findCurrency($id)
-    {
-        if (($model = VirtualCurrency::findOne($id)) !== null) {
-            return $model;
-        } else {
-            return false;
-        }
-    }
     /**
      * 增加或减少虚拟币
      */

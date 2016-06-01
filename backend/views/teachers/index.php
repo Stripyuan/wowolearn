@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use jasmine2\dwz\grid\GridView;
+use jasmine2\dwz\Dialog;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\TeachersSearch */
@@ -16,7 +17,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'search'  => $this->render('_search',['model' => $searchModel]),
         'tools' => [
-            'view',
+            Html::tag('li', Dialog::widget([
+                'title' => '查看',
+                'width' => '800',
+                'height' => '480',
+                'mask'  => true,
+                'text'  => '<span>查看</span>',
+                'options' => [
+                    'class' => 'icon',
+                    'max'   => 'true',
+                ],
+                'url'   => [Yii::$app->controller->uniqueId . '/view?id={row_id}']
+            ])),
             'update',
             Html::tag('li',Html::a('<span>批量删除</span>',
                 [Yii::$app->controller->uniqueId . '/m-delete'],
@@ -45,6 +57,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title' => '您确定锁定这些用户吗？',
                     '_csrf' => Yii::$app->request->getCsrfToken()
                 ])),
+            Html::tag('li',\jasmine2\dwz\Dialog::widget([
+                'title' => '用户积分管理',
+                'text' => '<span>用户积分管理</span>',
+                'url'   => 'teachers/integral?id={row_id}',
+                'options'   => [
+                    'class' => 'icon'
+                ]
+            ])),
         ],
         'columns' =>[
             [
@@ -58,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'phone_number',
             'identity_number',
+            'integral.integral',
             'status0:raw',
             'isSchoolTeacher:raw',
             'institution.name',

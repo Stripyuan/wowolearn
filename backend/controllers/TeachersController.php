@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\IntegralForm;
 use backend\models\Students;
 use Yii;
 use backend\models\Teachers;
@@ -140,6 +141,31 @@ class TeachersController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    public function actionIntegral($id){
+        $model = new IntegralForm();
+        $model->teacher_id = $id;
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                return array_merge(self::SUCCESS,[
+                    "callbackType"=>"closeCurrent",
+                ]);
+            } else {
+                $form_name = strtolower($model->formName());
+                $errors = $model->getErrors();
+                return array_merge(self::ERROR,[
+                    'form-name'   => $form_name,
+                    'errors' => $errors,
+                ]);
+            }
+        } else {
+            Yii::$app->response->format = Response::FORMAT_HTML;
+            return $this->render('integral', [
+                'model' => $model,
+                'teacher'   => Teachers::findOne($id)
+            ]);
         }
     }
 }

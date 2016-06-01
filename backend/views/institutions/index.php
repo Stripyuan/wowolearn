@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use jasmine2\dwz\grid\GridView;
+use jasmine2\dwz\Dialog;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\InstitutionsSearch */
@@ -15,7 +16,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'tools'  => [
-            'view',
+            Html::tag('li', Dialog::widget([
+                'title' => '查看',
+                'width' => '800',
+                'height' => '480',
+                'mask'  => true,
+                'text'  => '<span>查看</span>',
+                'options' => [
+                    'class' => 'icon',
+                    'max'   => 'true',
+                ],
+                'url'   => [Yii::$app->controller->uniqueId . '/view?id={row_id}']
+            ])),
             'update',
             Html::tag('li',Html::a('<span>批量删除</span>',
                 [Yii::$app->controller->uniqueId . '/m-delete'],

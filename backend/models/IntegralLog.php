@@ -23,15 +23,6 @@ class IntegralLog extends \yii\db\ActiveRecord
     {
         return '{{%integral_log}}';
     }
-    /**
-    * @inheritdoc
-    */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
 
     /**
      * @inheritdoc
@@ -65,5 +56,18 @@ class IntegralLog extends \yii\db\ActiveRecord
     public function getTeacher()
     {
         return $this->hasOne(Teachers::className(), ['id' => 'teacher_id']);
+    }
+    public function getAdmin()
+    {
+        return $this->hasOne(Admins::className(), ['id' => 'admin_id']);
+    }
+    public static function log($teacher,$integral,$admin = false){
+        $log = new self();
+        $log->admin_id = $admin ? $admin:Yii::$app->user->identity->getId();
+        $log->created_at = time();
+        $log->integral = $integral;
+        $log->teacher_id = $teacher;
+        if($log->save())
+            return $log;
     }
 }

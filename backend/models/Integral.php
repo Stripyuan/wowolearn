@@ -21,15 +21,6 @@ class Integral extends \yii\db\ActiveRecord
     {
         return '{{%integral}}';
     }
-    /**
-    * @inheritdoc
-    */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
 
     /**
      * @inheritdoc
@@ -51,7 +42,7 @@ class Integral extends \yii\db\ActiveRecord
     {
         return [
             'teacher_id' => 'Teacher ID',
-            'integral' => 'Integral',
+            'integral' => '积分',
         ];
     }
 

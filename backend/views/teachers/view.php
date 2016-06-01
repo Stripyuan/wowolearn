@@ -31,5 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'institution.name',
         ],
     ]) ?>
-
+    <?php $logs = new \yii\data\ArrayDataProvider([
+        'allModels' => $model->integralLogs
+    ]); ?>
+    <?= \jasmine2\dwz\grid\GridView::widget([
+        'dataProvider'  => $logs,
+        'showTools'     => false,
+        'columns'       => [
+            'created_at:datetime:时间',
+            'integral:text:积分',
+            'admin.username:text:操作员'
+        ]
+    ])?>
 </div>
