@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'password_hash',
             'auth_key',
+            'virtualCurrency.currency',
             'password_reset_token',
             'email:email',
             'phone_number',
@@ -33,5 +34,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'logo',
         ],
     ]) ?>
-
+    <?php $logs = new \yii\data\ArrayDataProvider([
+        'allModels' => $model->virtualCurrencyLogs
+    ]); ?>
+    <?= \jasmine2\dwz\grid\GridView::widget([
+        'dataProvider'  => $logs,
+        'showTools'     => false,
+        'columns'       => [
+            'created_at:datetime:时间',
+            'currency:text:积分',
+            'admin.username:text:操作员'
+        ]
+    ])?>
 </div>

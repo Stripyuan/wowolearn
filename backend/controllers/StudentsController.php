@@ -2,7 +2,9 @@
 
 namespace backend\controllers;
 
+use backend\models\CurrencyForm;
 use backend\models\StudentsSearch;
+use backend\models\VirtualCurrency;
 use Yii;
 use backend\models\Students;
 use yii\data\ActiveDataProvider;
@@ -145,6 +147,41 @@ class StudentsController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    protected function findCurrency($id)
+    {
+        if (($model = VirtualCurrency::findOne($id)) !== null) {
+            return $model;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * 增加或减少虚拟币
+     */
+    public function actionCurrency($id){
+        $model = new CurrencyForm();
+        $model->student_id = $id;
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                return array_merge(self::SUCCESS,[
+                    "callbackType"=>"closeCurrent",
+                ]);
+            } else {
+                $form_name = strtolower($model->formName());
+                $errors = $model->getErrors();
+                return array_merge(self::ERROR,[
+                    'form-name'   => $form_name,
+                    'errors' => $errors,
+                ]);
+            }
+        } else {
+            Yii::$app->response->format = Response::FORMAT_HTML;
+            return $this->render('currency', [
+                'model' => $model,
+                'student'   => Students::findOne($id)
+            ]);
         }
     }
 }

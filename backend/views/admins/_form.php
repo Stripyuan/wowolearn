@@ -14,6 +14,7 @@ use jasmine2\dwz\widgets\ActiveForm;
     <?= $form->field($model,'username')->textInput($model->isNewRecord?[]:['disabled' => 'disabled'])?>
     <?= $form->field($model,'password')?>
     <?= $form->field($model,'email')?>
+    <?= $form->field($model,'realname')?>
     <?= $form->field($model,'phone_number')?>
     <?= $form->field($model, 'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
         'items' => \backend\models\Admins::STATUS_LABELS

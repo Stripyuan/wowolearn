@@ -25,6 +25,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $updated_at
  * @property integer $teacher_id
  * @property integer $in_times
+ * @property integer $integral
  * @property string $content
  *
  * @property AttentionClass[] $attentionClasses
@@ -120,9 +121,9 @@ class OnlineClass extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['class_name', 'class_code', 'class_img', 'class_summary', 'class_category', 'class_subject', 'online_time',
+            [['integral','class_name', 'class_code', 'class_img', 'class_summary', 'class_category', 'class_subject', 'online_time',
                 'teacher_id','price', 'price_now','content','class_time'], 'required'],
-            [['class_time', 'like_times', 'class_type', 'created_at', 'updated_at', 'teacher_id', 'in_times'], 'integer'],
+            [['class_time', 'integral','like_times', 'class_type', 'created_at', 'updated_at', 'teacher_id', 'in_times'], 'integer'],
             [['price', 'price_now'], 'number'],
             [['class_name', 'class_img', 'teaching_plan'], 'string', 'max' => 255],
             [['class_code'], 'string', 'max' => 32],
@@ -160,6 +161,7 @@ class OnlineClass extends \yii\db\ActiveRecord
             'teacher' => '主讲老师',
             'in_times' => '报名人数',
             'content' => '详细介绍',
+            'integral'	=> '积分',
         ];
     }
 

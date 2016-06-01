@@ -6,6 +6,13 @@ use Yii;
 class MediaController extends \jasmine2\dwz\Controller
 {
 
+    public function behaviors()
+    {
+        return [
+
+        ];
+    }
+
     public function actionIndex($name = null)
     {
         if($name != null){

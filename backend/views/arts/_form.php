@@ -10,7 +10,7 @@ use jasmine2\dwz\widgets\ActiveForm;
 
 
     <?php $form = ActiveForm::begin(); ?>
-    <input type="hidden" name="navTabId" value="031de509059d457f6c2758e6d100f26216153502">
+    <input type="hidden" name="navTabId" value="dce7bdf25a56b3d94dfa0ab8d0699b3d6e839913">
     <?= $form->field($model, 'class_name')->textInput(['disabled' => true]) ?>
 
     <?= $form->field($model, 'class_code')->textInput(['disabled' => true]) ?>
@@ -39,13 +39,11 @@ use jasmine2\dwz\widgets\ActiveForm;
 
     <?= $form->field($model, 'price_now')->textInput()->unit('(元)') ?>
 
-    <?= $form->field($model, 'teaching_plan')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'teacher')->textInput(['disabled' => true,'value' => $model->teacher->realname]) ?>
 
     <?= $form->field($model, 'like_times')->textInput() ?>
     <?= $form->field($model, 'in_times')->textInput() ?>
-
+    <?= $form->field($model, 'integral')->textInput() ?>
 
     <?php ActiveForm::end(); ?>
 

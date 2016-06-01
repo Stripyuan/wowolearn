@@ -54,6 +54,7 @@ class MPassword extends Model
 	public function save(){
 		if($this->validate()){
 			$admin = \Yii::$app->user->identity;
+			$admin->setScenario('update');
 			$admin->setPassword($this->password);
 			if($admin->save()){
 				return true;

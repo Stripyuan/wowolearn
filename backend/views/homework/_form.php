@@ -39,12 +39,13 @@ use jasmine2\dwz\widgets\ActiveForm;
 
     <?= $form->field($model, 'price_now')->textInput()->unit('(元)') ?>
 
-    <?= $form->field($model, 'teaching_plan')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'teacher')->textInput(['disabled' => true,'value' => $model->teacher->realname]) ?>
 
     <?= $form->field($model, 'like_times')->textInput() ?>
+
     <?= $form->field($model, 'in_times')->textInput() ?>
+
+    <?= $form->field($model, 'integral')->textInput() ?>
 
 
     <?php ActiveForm::end(); ?>

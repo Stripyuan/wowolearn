@@ -56,7 +56,7 @@ class Admins extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username','email','phone_number'],'required'],
+            [['username','email','phone_number','realname'],'required'],
             [['password'],'required','on' => ['create']],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_LOCK]],
@@ -81,8 +81,8 @@ class Admins extends ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         return [
-            'create' => ['username','email','password','phone_number','status'],
-            'update' => ['username','email','password','phone_number','status'],
+            'create' => ['username','email','password','phone_number','status','realname'],
+            'update' => ['username','email','password','phone_number','status','realname'],
         ];
     }
     public function beforeSave($insert)
@@ -95,6 +95,7 @@ class Admins extends ActiveRecord implements IdentityInterface
         }
         return parent::beforeSave($insert);
     }
+
     public function attributeLabels()
     {
         return [
@@ -108,6 +109,7 @@ class Admins extends ActiveRecord implements IdentityInterface
             'updated_at' => '更新时间',
             'status0' => '状态',
             'status' => '状态',
+            'realname' => '姓名',
         ];
     }
 

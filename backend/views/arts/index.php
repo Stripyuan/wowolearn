@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'price_now:currency',
             'like_times',
             'in_times',
+            'integral',
             'created_at:datetime',
             'updated_at:datetime',
         ],

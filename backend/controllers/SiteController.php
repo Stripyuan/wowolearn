@@ -58,7 +58,17 @@ class SiteController extends Controller
             ]
         ];
     }
-
+    public function beforeAction($action)
+    {
+        if (parent::beforeAction($action)) {
+            // change layout for error action
+            if ($action->id=='error')
+                $this->layout =false;
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function actionIndex()
     {
         return $this->render('index');

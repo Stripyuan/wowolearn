@@ -38,7 +38,7 @@ $dwzBaseUrl = $this->getAssetManager()->getBundle(DwzAsset::className())->baseUr
         <div class="headerNav">
             <a href="#" class="logo" style="background: url('/www/wowolearn/backend/web/images/backend-logo.png') no-repeat;">标志</a>
             <ul class="nav">
-                <li><label for="" class="info">欢迎您：<?= Yii::$app->user->identity->username ?></label></li>
+                <li><label for="" class="info">欢迎您：<?= Yii::$app->user->identity->realname ?></label></li>
                 <li><?= Dialog::widget(['title' => '修改密码','url' => ['site/m-password'],'text' => '修改密码','rel' => 'm-password'])?></li>
                 <li><a href="<?= \yii\helpers\Url::to(['site/logout'])?>" methods="post">退出</a></li>
             </ul>
@@ -101,7 +101,7 @@ $dwzBaseUrl = $this->getAssetManager()->getBundle(DwzAsset::className())->baseUr
     $(function(){
         DWZ.init("<?= $dwzBaseUrl?>/xml/dwz.frag.xml", {
             //loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
-//		loginUrl:"login.html",	// 跳到登录页面
+//		    loginUrl:"login.html",	// 跳到登录页面
             statusCode:{ok:200, error:300, timeout:301}, //【可选】
             pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
             keys: {statusCode:"statusCode", message:"message"}, //【可选】

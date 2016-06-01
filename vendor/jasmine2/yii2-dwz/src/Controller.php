@@ -11,7 +11,7 @@ namespace jasmine2\dwz;
 
 
 use yii\web\Response;
-
+use yii\filters\AccessControl;
 class Controller extends \yii\web\Controller
 {
 	const TIMEOUT = [
@@ -47,5 +47,20 @@ class Controller extends \yii\web\Controller
 		}
 		\Yii::$app->response->format = Response::FORMAT_JSON;
 		return parent::beforeAction($action);
+	}
+	public function behaviors()
+	{
+		return [
+			'access' => [
+				'class' => AccessControl::className(),
+				'rules' => [
+					[
+						'allow' => true,
+						'roles' => ['@'],
+
+					],
+				],
+			],
+		];
 	}
 }

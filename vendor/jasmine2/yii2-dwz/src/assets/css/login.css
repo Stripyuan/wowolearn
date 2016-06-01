@@ -6,6 +6,7 @@
     margin: auto;
 }
 .form {
+    font-family: "Roboto", sans-serif;
     position: relative;
     z-index: 1;
     background: #FFFFFF;
@@ -114,25 +115,33 @@ div.has-error>.help-block{
     text-align: left;
     margin: -5px 0 10px;
 }
-.field-loginform-rememberme{
-    text-align: left;
-    margin-bottom: 10px;
-}
-.field-loginform-rememberme> label{
-    text-align: left;
-    max-width: 100%;
-    display: inline-block;
+.checkbox{
     min-height: 20px;
     padding-left: 20px;
-    font-weight:normal;
-    cursor: pointer;
-    font-size: 12px;
 }
-.field-loginform-rememberme> label> input[type=checkbox]{
+.checkbox.inline{
+    display: inline-block;
+    padding-top: 5px;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.field-loginform-rememberme{
     text-align: left;
-    position: absolute;
-    left: -125px;
-    margin-top: 3px;
+    margin-bottom: 15px;
+    height: 45px;
+    vertical-align: middle;
+}
+input[type="checkbox"]{
+    background: #fff;
+    line-height:normal;
+    width: auto;
+    margin: 4px 0 0;
+    float: left;
+    margin-left: -20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight:normal;
+    vertical-align: middle;
 }
 p.copyright{
     font-family: "Microsoft YaHei", Sans-Serif;
