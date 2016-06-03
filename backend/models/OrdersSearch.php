@@ -18,8 +18,8 @@ class OrdersSearch extends Orders
     public function rules()
     {
         return [
-            [['id', 'class_id', 'count', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['order_id', 'user_id'], 'safe'],
+            [['id', 'count', 'status', 'created_at', 'updated_at','status'], 'integer'],
+            [['order_id', 'user_id','class_id'], 'safe'],
             [['total_fee'], 'number'],
         ];
     }
@@ -59,18 +59,13 @@ class OrdersSearch extends Orders
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'class_id' => $this->class_id,
-            'count' => $this->count,
-            'total_fee' => $this->total_fee,
-            'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ]);
+        if($this->status != -1)
+            $query->andFilterWhere([
+                'status' => $this->status,
+            ]);
 
         $query->andFilterWhere(['like', 'order_id', $this->order_id])
-            ->andFilterWhere(['like', 'user_id', $this->user_id]);
+            ->andFilterWhere(['like', 'class_id', $this->class_id]);
 
         return $dataProvider;
     }

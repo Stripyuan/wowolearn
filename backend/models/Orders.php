@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use jasmine2\dwz\helpers\Html;
 /**
  * This is the model class for table "{{%orders}}".
  *
@@ -19,6 +20,15 @@ use yii\behaviors\TimestampBehavior;
  */
 class Orders extends \yii\db\ActiveRecord
 {
+    const ORDER_STATUS_CREATE   = 1;
+    const ORDER_STATUS_DONE     = 2;
+    const ORDER_STATUS_COLOSE   = 3;
+
+    const ORDER_STATUS_LABELS = [
+        1   => '待支付',
+        2   => '支付成功',
+        3   => '关闭订单',
+    ];
     /**
      * @inheritdoc
      */
@@ -58,14 +68,37 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'order_id' => '订单号',
-            'class_id' => '课程名',
+            'order_id' => '订单号码',
+            'class_id' => '课程',
             'user_id' => '用户',
             'count' => '数量',
-            'total_fee' => '总价',
-            'status' => '状态',
+            'total_fee' => '订单总金额',
+            'status' => '订单状态',
+            'status0' => '订单状态',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];
+    }
+
+    public function getClass()
+    {
+        return $this->hasOne(OnlineClass::className(),['id' => 'class_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(Students::className(),['id'    => 'user_id']);
+    }
+    public function getStatus0(){
+        if($this->status == self::ORDER_STATUS_COLOSE){
+            return Html::tag('label',self::ORDER_STATUS_LABELS[$this->status],['class' => 'danger']);
+        } elseif($this->status == self::ORDER_STATUS_DONE){
+            return Html::tag('label',self::ORDER_STATUS_LABELS[$this->status],['class' => 'success']);
+        } elseif($this->status == self::ORDER_STATUS_CREATE){
+            return Html::tag('label',self::ORDER_STATUS_LABELS[$this->status],['class' => 'info']);
+        }
+    }
+    public function getLog(){
+        return $this->hasMany(OrderStatusLog::className(),['order_id'=> 'id']);
     }
 }

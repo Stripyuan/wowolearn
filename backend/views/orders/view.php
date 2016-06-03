@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= DetailView::widget([
         'model' => $model,
+        'columns'   => 2,
         'attributes' => [
             'id',
             'order_id',
@@ -27,5 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
         ],
     ]) ?>
-
+    <?php $log = new \yii\data\ArrayDataProvider([
+        'allModels'     => $model->log,
+    ]); ?>
+    <?= \jasmine2\dwz\grid\GridView::widget([
+        'dataProvider'  => $log,
+        'showTools' =>false,
+        'columns'   => [
+            'order.order_id:text:订单号',
+            'admin:text:操作员',
+            'status0:text:状态',
+            'created_at:datetime:时间',
+        ],
+    ])?>
 </div>

@@ -13,19 +13,13 @@ use jasmine2\dwz\widgets\SearchForm;
         <div class="searchBar">
             <?php $form = SearchForm::begin()?>
 
-    <?= $form->field($model, 'id') ?>
-
     <?= $form->field($model, 'order_id') ?>
-
-    <?= $form->field($model, 'class_id') ?>
-
-    <?= $form->field($model, 'user_id') ?>
-
-    <?= $form->field($model, 'count') ?>
 
     <?php // echo $form->field($model, 'total_fee') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?= $form->field($model, 'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
+        'items'         => \backend\models\Orders::ORDER_STATUS_LABELS
+    ]) ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 

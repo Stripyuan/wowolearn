@@ -6,6 +6,7 @@ namespace jasmine2\dwz\helpers;
  * Date: 2016-4-25
  * Time: 09:16
  */
+use yii\validators\RequiredValidator;
 class Html extends \yii\helpers\Html
 {
 	public static function divider(){
@@ -35,6 +36,12 @@ class Html extends \yii\helpers\Html
 	{
 		$attribute = static::getAttributeName($attribute);
 		$label = ArrayHelper::remove($options, 'label', static::encode($model->getAttributeLabel($attribute)));
+		foreach ($model->getActiveValidators($attribute) as $validator) {
+			/* @var $validator \yii\validators\Validator */
+			if ($validator instanceof RequiredValidator) {
+				$label .= " <span style='color: red;'>*</span>";
+			}
+		}
 		$tag = ArrayHelper::remove($options, 'tag', 'dt');
 		return static::tag($tag, $label, $options);
 	}

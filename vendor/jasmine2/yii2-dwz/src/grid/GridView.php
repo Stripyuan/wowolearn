@@ -197,6 +197,7 @@ class GridView extends BaseListView
 								'text'  => '<span>查看</span>',
 								'options' => [
 									'class' => 'icon',
+									'max'   => 'true',
 								],
 								'url'   => [Yii::$app->controller->uniqueId . '/view?id={row_id}']
 							]));

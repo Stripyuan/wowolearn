@@ -54,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'like_times',
             'in_times',
             'integral',
+            'status0:raw',
             'created_at:datetime',
             'updated_at:datetime',
         ],

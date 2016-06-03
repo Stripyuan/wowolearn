@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use jasmine2\dwz\helpers\Html;
 /**
  * This is the model class for table "{{%online_class}}".
  *
@@ -27,6 +28,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $in_times
  * @property integer $integral
  * @property string $content
+ * @property integer $status
  *
  * @property AttentionClass[] $attentionClasses
  * @property Students[] $students
@@ -87,7 +89,14 @@ class OnlineClass extends \yii\db\ActiveRecord
         'geography'	=> '地理',
     ];
 
-
+    const STATUS_OPEN   = 1;
+    const STATUS_CLOSE  = 2;
+    const STATUS_DONE  = 3;
+    const STATUS_LABELS = [
+        self::STATUS_OPEN       => '审核中',
+        self::STATUS_DONE       => '审核通过',
+        self::STATUS_CLOSE      => '审核未通过',
+    ];
     public function getClassCategoryLabels()
     {
         return self::CLASS_CATEGORY_LABELS[$this->class_category];
@@ -123,7 +132,7 @@ class OnlineClass extends \yii\db\ActiveRecord
         return [
             [['integral','class_name', 'class_code', 'class_img', 'class_summary', 'class_category', 'class_subject', 'online_time',
                 'teacher_id','price', 'price_now','content','class_time'], 'required'],
-            [['class_time', 'integral','like_times', 'class_type', 'created_at', 'updated_at', 'teacher_id', 'in_times'], 'integer'],
+            [['status','class_time', 'integral','like_times', 'class_type', 'created_at', 'updated_at', 'teacher_id', 'in_times'], 'integer'],
             [['price', 'price_now'], 'number'],
             [['class_name', 'class_img', 'teaching_plan'], 'string', 'max' => 255],
             [['class_code'], 'string', 'max' => 32],
@@ -162,6 +171,7 @@ class OnlineClass extends \yii\db\ActiveRecord
             'in_times' => '报名人数',
             'content' => '详细介绍',
             'integral'	=> '积分',
+            'status0'	=> '审核状态',
         ];
     }
 
@@ -203,5 +213,16 @@ class OnlineClass extends \yii\db\ActiveRecord
     public function getOnlineClassCommonts()
     {
         return $this->hasMany(OnlineClassCommonts::className(), ['class_id' => 'id']);
+    }
+
+    public function getStatus0(){
+        if($this->status == self::STATUS_CLOSE){
+            return Html::tag('label',self::STATUS_LABELS[$this->status],['class' => 'danger']);
+        } elseif($this->status == self::STATUS_OPEN){
+            return Html::tag('label',self::STATUS_LABELS[$this->status],['class' => 'warning']);
+        } elseif($this->status == self::STATUS_DONE){
+            return Html::tag('label',self::STATUS_LABELS[$this->status],['class' => 'success']);
+        }
+
     }
 }

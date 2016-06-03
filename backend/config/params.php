@@ -19,7 +19,16 @@ return [
 				],
 				[
 					'label' => '直播收入',
-					'url'   => ['/online-income']
+					'menus' => [
+						[
+							'label' =>  '每日收入',
+							'url'   => ['/online-income']
+						],
+						[
+							'label' =>  '分类收入',
+							'url'   => ['/online-income/category']
+						],
+					]
 				],
 			],
 		],
@@ -146,10 +155,7 @@ return [
 					'label' => '机构管理',
 					'url'   => ['/institutions']
 				],
-				[
-					'label' => '管理员管理',
-					'url'   => ['/admins']
-				]
+
 			]
 		],
 		[
@@ -168,6 +174,10 @@ return [
 		[
 			'label' => '系统管理',
 			'menus' => [
+				[
+					'label' => '管理员管理',
+					'url'   => ['/admins']
+				],
 				[
 					'label' => '焦点图',
 					'url'   => ['/focus-map']

@@ -2,6 +2,9 @@
 
 namespace backend\controllers;
 
+use backend\models\forms\OrderStatusForm;
+use backend\models\OrderLog;
+use backend\models\OrderStatusLog;
 use Yii;
 use backend\models\Orders;
 use backend\models\OrdersSearch;
@@ -60,37 +63,6 @@ class OrdersController extends Controller
     }
 
     /**
-     * Creates a new Orders model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Orders();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if($model->save()){
-                return array_merge(self::SUCCESS,[
-                    'navTabId' => Yii::$app->request->post()['navTabId'],
-                    "callbackType"=>"closeCurrent",
-                ]);
-            } else {
-                $form_name = strtolower($model->formName());
-                $errors = $model->getErrors();
-                return array_merge(self::ERROR,[
-                    'form-name'   => $form_name,
-                    'errors' => $errors,
-                ]);
-            }
-        } else {
-            Yii::$app->response->format = Response::FORMAT_HTML;
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
      * Updates an existing Orders model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -130,13 +102,49 @@ class OrdersController extends Controller
      */
     public function actionDelete($id)
     {
-        if($this->findModel($id)->delete()){
+        $model = $this->findModel($id);
+        $_log  = $model->toArray();
+        if($model->delete()){
+            OrderLog::log($_log,'删除');
             return self::SUCCESS;
         }
 
         return self::ERROR;
     }
+    public function actionMDelete()
+    {
+        $post = Yii::$app->request->post()['ids'];
+        $_log = Orders::find()->where(['in','id',$post])->asArray()->all();
+        if(Orders::deleteAll(['in','id',$post])){
+            OrderLog::log($_log,'批量删除');
+            return self::SUCCESS;
+        }
+        return self::ERROR;
+    }
 
+    public function actionUpdateStatus($id)
+    {
+        $model = new OrderStatusForm();
+        $model->order_id = $id;
+        if($model->load(Yii::$app->request->post())){
+            if($model->save()){
+                return array_merge(self::SUCCESS,[
+                    "callbackType"=>"closeCurrent",
+                ]);
+            } else {
+                $form_name = strtolower($model->formName());
+                $errors = $model->getErrors();
+                return array_merge(self::ERROR,[
+                    'form-name'   => $form_name,
+                    'errors' => $errors,
+                ]);
+            }
+        }
+        Yii::$app->response->format = Response::FORMAT_HTML;
+        return $this->render('update-status',[
+            'model' => $model,
+        ]);
+    }
     /**
      * Finds the Orders model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

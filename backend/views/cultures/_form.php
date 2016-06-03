@@ -44,6 +44,9 @@ use jasmine2\dwz\widgets\ActiveForm;
     <?= $form->field($model, 'like_times')->textInput() ?>
     <?= $form->field($model, 'in_times')->textInput() ?>
     <?= $form->field($model, 'integral')->textInput() ?>
-
+    <?= $form->field($model, 'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
+        'promptShow'    => false,
+        'items'         => \backend\models\OnlineClass::STATUS_LABELS
+    ]) ?>
     <?php ActiveForm::end(); ?>
 
