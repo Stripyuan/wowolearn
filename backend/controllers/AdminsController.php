@@ -40,6 +40,7 @@ class AdminsController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->post());
 
         Yii::$app->response->format = Response::FORMAT_HTML;
+        $dataProvider->query->where(['not in','username',['admin',Yii::$app->user->identity->username ]]);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

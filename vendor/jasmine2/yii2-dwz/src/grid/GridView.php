@@ -35,6 +35,7 @@ class GridView extends BaseListView
 		'create',
 		'update',
 		'delete',
+		'm-delete'
 	];
 	public $tableOptions = ['class' => 'table','width' => '100%'];
 	public $rowOptions = [];
@@ -201,14 +202,17 @@ class GridView extends BaseListView
 								],
 								'url'   => [Yii::$app->controller->uniqueId . '/view?id={row_id}']
 							]));
-							/*$tools[] = Html::tag('li',Html::a(
-								'<span>查看</span>',
-								[Yii::$app->controller->uniqueId . '/view?id={row_id}'],
+							break;
+						case 'm-delete':
+							$tools[] =  Html::tag('li',Html::a('<span>批量删除</span>',
+								[Yii::$app->controller->uniqueId . '/m-delete'],
 								[
-									'target' => 'navTab',
-									'class' => 'icon',
-								]
-							));*/
+									'class' => 'delete',
+									'target' => 'selectedTodo',
+									'rel'    => 'ids[]',
+									'title' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+									'_csrf' => Yii::$app->request->getCsrfToken()
+								]));
 							break;
 						default:
 							$tools[] = $tool;

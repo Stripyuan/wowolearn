@@ -71,11 +71,11 @@ return [
 			'menus' => [
 				[
 					'label' => '我要教',
-					'url'   => ['/']
+					'url'   => ['/i-want-teach']
 				],
 				[
 					'label' => '我要学',
-					'url'   => ['/']
+					'url'   => ['/i-want-learn']
 				]
 			],
 		],

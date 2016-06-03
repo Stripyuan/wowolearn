@@ -5,25 +5,25 @@ namespace backend\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 /**
- * This is the model class for table "{{%learns}}".
+ * This is the model class for table "{{%teachs}}".
  *
  * @property integer $id
- * @property integer $student_id
+ * @property integer $teacher_id
  * @property string $title
  * @property string $content
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Students $student
+ * @property Teachers $teacher
  */
-class Learns extends \yii\db\ActiveRecord
+class Teachs extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%learns}}';
+        return '{{%teachs}}';
     }
     /**
     * @inheritdoc
@@ -41,11 +41,11 @@ class Learns extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['student_id', 'title', 'created_at', 'updated_at'], 'required'],
-            [['student_id', 'created_at', 'updated_at'], 'integer'],
+            [['teacher_id', 'title', 'created_at', 'updated_at'], 'required'],
+            [['teacher_id', 'created_at', 'updated_at'], 'integer'],
             [['content'], 'string'],
             [['title'], 'string', 'max' => 255],
-            [['student_id'], 'exist', 'skipOnError' => true, 'targetClass' => Students::className(), 'targetAttribute' => ['student_id' => 'id']],
+            [['teacher_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teachers::className(), 'targetAttribute' => ['teacher_id' => 'id']],
         ];
     }
 
@@ -56,7 +56,7 @@ class Learns extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'student_id' => '学生姓名',
+            'teacher_id' => '老师姓名',
             'title' => '标题',
             'content' => '内容',
             'created_at' => '创建时间',
@@ -67,8 +67,8 @@ class Learns extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getStudent()
+    public function getTeacher()
     {
-        return $this->hasOne(Students::className(), ['id' => 'student_id']);
+        return $this->hasOne(Teachers::className(), ['id' => 'teacher_id']);
     }
 }
