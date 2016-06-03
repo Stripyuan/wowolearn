@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\Income;
 use backend\models\MPassword;
 use Yii;
 use yii\web\Controller;
@@ -71,7 +72,10 @@ class SiteController extends Controller
     }
     public function actionIndex()
     {
-        return $this->render('index');
+        $data = Income::find()->select('sum(income) as income,date_time')->groupBy('date_time')->orderBy(['date_time' => SORT_DESC])->asArray()->all();
+        return $this->render('index',[
+            'data'  => $data
+        ]);
     }
 
     public function actionMPassword(){

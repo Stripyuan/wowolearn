@@ -60,6 +60,10 @@ return [
 					'label' => '所有订单',
 					'url'   => ['/orders']
 				],
+				[
+					'label' => '订单日志',
+					'url'   => ['/order-log']
+				],
 			],
 		],
 		[

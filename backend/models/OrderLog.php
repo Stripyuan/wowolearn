@@ -42,10 +42,10 @@ class OrderLog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'created_at' => 'Created At',
-            'content' => 'Content',
-            'admin' => 'Admin',
-            'action' => 'Action',
+            'created_at' => '时间',
+            'content' => '内容',
+            'admin' => '操作员',
+            'action' => '动作',
         ];
     }
 

@@ -4,50 +4,63 @@
 
 $this->title = Yii::$app->name;
 ?>
-<div class="site-index">
+<div class="site-index pageContent">
+    <h2 class="contentTitle">直播收入</h2>
+    <?php
+    $axisxstep = count($data) -1;
+    $chart_x = "[";
+    $chart_y = "[";
+    $axisxstepLabel = "[";
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    for($i = $axisxstep;$i>=0;$i--){
+        $chart_x .= $data[$i]['date_time'] . ",";
+        $chart_y .= $data[$i]['income'] . ",";
+        $axisxstepLabel .= ($axisxstep - $i) . ",";
+    }
+    $chart_x = substr($chart_x,0,-1)."]";
+    $chart_y = substr($chart_y,0,-1)."]";
+    $axisxstepLabel = substr($axisxstepLabel,0,-1)."]";
+    ?>
+    <script type="text/javascript">
+        var options = {
+            axis: "0 0 1 1",
+            axisxstep: <?= $axisxstep ?>,
+            axisxlables: <?= $chart_x ?>,
+            shade:true,
+            smooth:false,
+            symbol:"circle",
+            colors:["#855"]
+        };
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        $(function () {
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+            // Make the raphael object
+            var r = Raphael("onlineClass");
 
-    <div class="body-content">
+            var lines = r.linechart(
+                60, // X start in pixels
+                0, // Y start in pixels
+                920, // Width of chart in pixels
+                200, // Height of chart in pixels
+                <?= $axisxstepLabel ?>,
+                <?= $chart_y ?>,
+                options // opts object
+            ).hoverColumn(function () {
+                this.tags = r.set();
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                for (var i = 0, ii = this.y.length; i < ii; i++) {
+                    this.tags.push(r.tag(this.x, this.y[i], this.values[i]+"元", 180, 10).insertBefore(this).attr([{ fill: "#fff" }, { fill: this.symbols[i].attr("fill") }]));
+                }
+            }, function () {
+                this.tags && this.tags.remove();
+            });
+        });
+    </script>
+    <div id="onlineClass" style="width: 1000px;height: 220px;"></div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
+    <h2 class="contentTitle">视频收入</h2>
+    <div id="video" style="width: 1000px;height: 200px;"></div>
+    <h2 class="contentTitle">商城收入</h2>
+    <div id="jfd" style="width: 1000px;height: 200px;">
     </div>
 </div>

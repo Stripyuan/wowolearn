@@ -85,7 +85,7 @@ $dwzBaseUrl = $this->getAssetManager()->getBundle(DwzAsset::className())->baseUr
             </ul>
             <div class="navTab-panel tabsPageContent layoutBox">
                 <div class="page unitBox">
-                    <h1>这是什么</h1>
+                    <?= $content?>
                 </div>
             </div>
         </div>
