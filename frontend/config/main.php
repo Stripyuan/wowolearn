@@ -41,9 +41,16 @@ return [
                 '<action:[-\w]+>.html'   =>  'site/<action>',
                 'posts/categroy/<cate:\d+>.html'    => 'posts/index',
                 'posts/<id:\d+>.html' => 'posts/view',
+                'class/<id:\w+>.html' => 'class/view',
             ],
         ],
-
+        'formatter' => [
+            'datetimeFormat' => 'php:Y年m月d日 H:i',
+            'dateFormat' => 'php:Y年m月d日',
+            'decimalSeparator' => '.',
+            'thousandSeparator' => ',',
+            'currencyCode' => '¥',
+        ],
     ],
     'params' => $params,
 ];

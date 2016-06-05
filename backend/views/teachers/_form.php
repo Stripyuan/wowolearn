@@ -21,6 +21,8 @@ use jasmine2\dwz\helpers\ArrayHelper;
 
     <?= $form->field($model, 'email') ?>
 
+    <?= $form->field($model, 'introduction')->textarea(['show' => false,'rows' => 3]) ?>
+
     <?= $form->field($model, 'identity_number')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'is_school_teacher')->widget(\jasmine2\dwz\widgets\Combox::className(),[

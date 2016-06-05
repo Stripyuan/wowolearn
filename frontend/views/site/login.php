@@ -1,12 +1,21 @@
 <?php
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 $this->title = "登录";
 ?>
+<style>
+    button:hover{
+        background: rgba(0,0,0,0.1);
+    }
+</style>
 <div class="container-fluid login-header">
     <div class="container">
         <a href="<?= \yii\helpers\Url::to(['/'])?>" title="返回主页">
         <img src="/images/login-banner.png" alt="" class="img-responsive pull-left">
         </a>
+        <div class="pull-right">
+            没有账号?&nbsp; <a href="<?= Url::to(['site/signup'])?>"><button type="submit" class="login-btn">注册</button></a>
+        </div>
     </div>
 </div>
 

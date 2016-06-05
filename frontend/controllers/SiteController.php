@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\OnlineClass;
+use frontend\models\forms\SignUp;
 use frontend\models\SignupFormStudent;
 use Yii;
 use yii\base\InvalidParamException;
@@ -73,7 +75,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $homework       = OnlineClass::find()->where(['class_type' => OnlineClass::CLASS_TYPE_HOMEWORK,'status' => OnlineClass::STATUS_DONE])->orderBy(['updated_at' => SORT_DESC])->limit(4)->asArray()->all();
+        $cultures       = OnlineClass::find()->where(['class_type' => OnlineClass::CLASS_TYPE_CULTURES,'status' => OnlineClass::STATUS_DONE])->orderBy(['updated_at' => SORT_DESC])->limit(4)->asArray()->all();
+        $arts           = OnlineClass::find()->where(['class_type' => OnlineClass::CLASS_TYPE_ARTS,'status' => OnlineClass::STATUS_DONE])->orderBy(['updated_at' => SORT_DESC])->limit(4)->asArray()->all();
+        return $this->render('index',[
+            'homework'  => $homework,
+            'cultures'  => $cultures,
+            'arts'  => $arts,
+        ]);
     }
 
     /**
@@ -83,10 +92,10 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
+        if(!Yii::$app->user->isGuest){
             return $this->goHome();
         }
-
+        $this->layout = 'no-nav';
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
@@ -149,16 +158,21 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
-        $model = new SignupFormStudent();
+        if(!Yii::$app->user->isGuest){
+            return $this->goHome();
+        }
+        $this->layout = 'no-nav';
+        $model = new SignUp();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
+                //
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
                 }
             }
         }
 
-        return $this->render('signup-student', [
+        return $this->render('signup', [
             'model' => $model,
         ]);
     }

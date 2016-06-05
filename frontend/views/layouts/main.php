@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use frontend\assets\AppAsset;
 
 AppAsset::register($this);
@@ -21,34 +22,46 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+<!-- top -->
+<div class="bg"></div>
+<!-- 导航条 -->
+<div class="logo-nav-itp container">
+    <div class="logo">
+        <h1><a href="./">窝窝教育</a></h1>
+    </div>
+    <div class="nav">
+        <ul>
+            <li class="active"><a href="">首页</a></li>
+            <li><a href="homework.html">作业直播</a></li>
+            <li><a href="">文化直播</a></li>
+            <li><a href="">艺术直播</a></li>
+            <!--<li><a href="">名师在线</a></li>-->
+            <li><a href="">教案文档</a></li>
+        </ul>
+    </div>
+    <div class="itp">
+        <form class="form-inline navbar-form">
+            <input class="form-control" type="text" placeholder="请输入课程名称或学科">
+            <button class="btn btn-success" type="submit">搜 索</button>
+        </form>
+    </div>
+    <div class="pull-right l-i">
+        <?php if(Yii::$app->user->isGuest):?>
+            <a href="<?= Url::to(['site/login'])?>" style="color: #666;">马上登录</a>
+            &nbsp;
+            <a href="<?= Url::to(['site/signup'])?>" style="color: #666;">注册</a>
+        <?php else: ?>
+            <span class="text-overflow">欢迎您：<?= Yii::$app->user->identity->username?></span>
+        <?php endif;?>
+        &nbsp;
+        <?php if(!Yii::$app->user->isGuest):?>
+            <a href="<?= Url::to(['site/logout'])?>" style="color: #666;">退出</a>
+        <?php endif; ?>
+    </div>
+</div>
 <?= $content ?>
 <div class="container-fluid footer">
-    <div class="container">
-        <div class="col-md-4">
-            <ul>
-                <h6>使用帮助</h6>
-                <li><a href="">平台功能简介</a></li>
-                <li><a href="">平台使用流程</a></li>
-                <li><a href="">收费标准</a></li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <ul>
-                <h6>收费标准</h6>
-                <li><a href="">平台功能简介</a></li>
-                <li><a href="">平台使用流程</a></li>
-                <li><a href="">收费标准</a></li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <ul>
-                <h6>二维码</h6>
-                <img src="/images/images.png" alt="">
-            </ul>
-        </div>
-
-        <p class="text-center">© 2016 - 2018 白银金中琳自动化科技有限公司 陇ICP备-1000000</p>
-    </div>
+    <?= $this->render('footer')?>
 </div>
 <?php $this->endBody() ?>
 </body>

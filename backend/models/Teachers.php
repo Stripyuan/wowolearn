@@ -17,6 +17,7 @@ use jasmine2\dwz\helpers\Html;
  * @property string $identity_number
  * @property integer $is_school_teacher
  * @property string $teacher_certificate
+ * @property string $introduction
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $institution_id
@@ -61,11 +62,12 @@ class Teachers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password_hash', 'auth_key', 'phone_number', 'identity_number', 'teacher_certificate', 'created_at', 'updated_at'], 'required'],
+            [['username', 'password_hash','introduction', 'auth_key', 'phone_number', 'identity_number', 'teacher_certificate', 'created_at', 'updated_at','introduction'], 'required'],
             [['is_school_teacher', 'status', 'institution_id'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'teacher_certificate'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['phone_number'], 'string', 'max' => 11],
+            [['introduction'], 'string', 'max' => 1024],
             [['identity_number'], 'string', 'max' => 18],
             [['username'], 'unique'],
             [['phone_number'], 'unique'],
@@ -111,6 +113,7 @@ class Teachers extends \yii\db\ActiveRecord
             'institution_id' => '所属机构',
             'status0' => '状态',
             'status' => '状态',
+            'introduction' => '老师简介',
         ];
     }
 

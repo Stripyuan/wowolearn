@@ -17,7 +17,7 @@ use jasmine2\dwz\widgets\ActiveForm;
 
     <?= $form->field($model, 'class_img')->textInput(['disabled' => true]) ?>
 
-    <?= $form->field($model, 'class_summary')->textarea() ?>
+    <?= $form->field($model, 'class_summary')->textarea(['show' => false]) ?>
 
     <?= $form->field($model, 'content')->textarea() ?>
 

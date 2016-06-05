@@ -53,6 +53,7 @@ body{
         height: $navigate_height;
         line-height: $navigate_height;
         color: #fff;
+        color: #fff;
         transition: background .5s ease-out,color .5s ease-in;
         -moz-transition: background .5s ease-out,color .5s ease-in;
         -webkit-transition: background .5s ease-out,color .5s ease-in;
@@ -208,7 +209,7 @@ div.class-list{
       padding: .5rem;
       position: absolute;
       left: 0;
-      bottom: -40px;
+      bottom: -20px;
       h5{
         font-family: "Microsoft Yahei";
         font-size: 14px;
@@ -227,6 +228,7 @@ div.class-list{
           font-style: normal;
           font-weight: normal;
           color: #ff7500;
+          padding-left: 4px;
         }
         span{
           margin: 0 4px;
@@ -598,3 +600,6 @@ div.post-content{
     text-indent: 2em;
   }
 }
+
+
+@import "styles";

@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone_number',
             'identity_number',
             'status0:raw',
+            'introduction',
             'isSchoolTeacher:raw',
             'teacher_certificate',
             'created_at:datetime',
