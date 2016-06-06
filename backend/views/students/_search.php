@@ -14,7 +14,7 @@ use jasmine2\dwz\widgets\SearchForm;
 			<?= $form->field($model,'username') ?>
 			<?= $form->field($model,'realname') ?>
 			<?= $form->field($model,'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
-				'items' => \backend\models\Students::STATUS_LABELS
+				'items' => \backend\models\Users::STATUS_LABELS
 			]) ?>
 			<?php SearchForm::end()?>
 			<div class="subBar">

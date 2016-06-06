@@ -93,8 +93,8 @@ $this->title = $model->class_name;
                 <div class="teacher" align="center" style="margin-top: 20px;">
                     <!-- 导航到教师的公共个人中心 -->
                     <a href="" class="teacher-avatar">
-                        <?php if($model->teacher->avatar):?>
-                            <img class="img-circle" src="<?= $model->teacher->avatar?>" alt="" width="140px" height="auto" style="margin-left: auto;margin-right: auto;">
+                        <?php if($model->teacher->logo):?>
+                            <img class="img-circle" src="<?= $model->teacher->logo?>" alt="" width="140px" height="auto" style="margin-left: auto;margin-right: auto;">
                         <?php else:?>
                         <img class="img-circle" src="/statics/avatars/unknown.png" alt="" width="140px" height="auto" style="margin-left: auto;margin-right: auto;">
                         <?php endif;?>

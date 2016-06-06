@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'integral.integral',
             'status0:raw',
             'isSchoolTeacher:raw',
-            'institution.name',
+            'institution0.name',
             'created_at:datetime',
             'updated_at:datetime',
             // ['class' => 'jasmine2\dwz\grid\ActionColumn'],

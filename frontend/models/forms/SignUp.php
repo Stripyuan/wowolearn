@@ -17,7 +17,7 @@ class SignUp extends Model
 	public $phone_number; // 手机号码
 	public $password; // 密码
 	public $v_code;// 手机验证码
-	public $identity;
+	public $identity = 'student';
 
 	public function rules()
 	{
@@ -32,12 +32,24 @@ class SignUp extends Model
 					$this->addError($attribute,"密码不符合规则[必须包含大小写字母和数字的组合]");
 			}],
 			['password','match','pattern' => '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/'],
-			['identity','in', 'range' => ['student','teacher','institution']]
+			['identity','in', 'range' => ['student','teacher','institution']],
+			['v_code',function($attribute, $params){
+				if(($code = \Yii::$app->cache->get($this->phone_number)) && $code == $this->$attribute){
+				} else {
+					$this->addError($attribute,"验证码不正确");
+				}
+			}],
 		];
 	}
 
 	public function signup(){
+		if($this->validate()){
+			// 按角色存储
 
+			return $this;
+		} else {
+			return false;
+		}
 	}
 
 	public function attributeLabels()

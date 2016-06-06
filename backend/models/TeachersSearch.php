@@ -2,15 +2,15 @@
 
 namespace backend\models;
 
+use backend\models\Users;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Teachers;
 
 /**
  * TeachersSearch represents the model behind the search form about `backend\models\Teachers`.
  */
-class TeachersSearch extends Teachers
+class TeachersSearch extends Users
 {
     public $status = -1;
     /**
@@ -42,7 +42,7 @@ class TeachersSearch extends Teachers
      */
     public function search($params)
     {
-        $query = Teachers::find();
+        $query = Users::find()->where(['role' => 'teacher']);
 
         // add conditions that should always apply here
 

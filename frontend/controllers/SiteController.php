@@ -164,14 +164,13 @@ class SiteController extends Controller
         $this->layout = 'no-nav';
         $model = new SignUp();
         if ($model->load(Yii::$app->request->post())) {
-            var_dump($model);
-            return "dd";
-            /*if ($user = $model->signup()) {
+            if ($user = $model->signup()) {
                 //
-                if (Yii::$app->getUser()->login($user)) {
+                /*if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
-                }
-            }*/
+                }*/
+                var_dump($user);
+            }
         }
 
         return $this->render('signup', [

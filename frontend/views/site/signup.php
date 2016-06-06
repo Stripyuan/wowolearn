@@ -29,22 +29,38 @@ $this->title = '注册';
         <form action="" method="post" id="signup-form">
         <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken()?>">
         <p class="field-signup-phone_number required">手机号：
-            <input type="text" id="signup-phone_number" name="SignUp[phone_number]" placeholder="可用于登录和找回密码">
-            <span class=""> 请输入手机号码</span>
+            <input type="text" id="signup-phone_number" name="SignUp[phone_number]" placeholder="可用于登录和找回密码" value="<?= $model->phone_number?>">
+
+            <?php if($error_phone_number = $model->getFirstError('phone_number')): ?>
+                <span class="wowo-error"><?= $error_phone_number ?></span>
+            <?php else:?>
+                <span class=""> 请输入手机号码</span>
+            <?php endif; ?>
         </p>
         <p class="field-signup-password required">密　码：
             <input type="password" id="signup-password" name="SignUp[password]" placeholder="密码">
-            <span> 请输入8-16位数字、大写字母和小写字母的组合</span>
+
+            <?php if($error_password = $model->getFirstError('password')): ?>
+                <span class="wowo-error"><?= $error_password ?></span>
+            <?php else:?>
+                <span> 请输入8-16位数字、大写字母和小写字母的组合</span>
+            <?php endif; ?>
         </p>
         <p class="clr">身　份：
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="student" checked="checked"> 学生</label>
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="teacher"> 老师</label>
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="institution"> 机构</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="student" <?= $model->identity == "student"?'checked="checked"':""?>> 学生</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="teacher" <?= $model->identity == "teacher"?'checked="checked"':""?>> 老师</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="institution" <?= $model->identity == "institution"?'checked="checked"':""?>> 机构</label>
         </p>
         <p class="field-signup-v_code required">验证码：
-            <input type="text" id="signup-v_code" class="wowo-yzm" name="SignUp[v_code]" placeholder="验证码">
+            <input type="text" id="signup-v_code" class="wowo-yzm" name="SignUp[v_code]" placeholder="验证码" value="<?= $model->v_code?>">
             <button type="button" id="get-v-code">获取短信验证码</button>
-            <span class="">输入手机验证码</span></p>
+
+            <?php if($error_v_code = $model->getFirstError('v_code')): ?>
+                <span class="wowo-error"><?= $error_v_code ?></span>
+            <?php else:?>
+                <span class="">输入手机验证码</span>
+            <?php endif; ?>
+        </p>
         <p class="agreement"><input id="accept-deal" type="checkbox" checked="checked" class="wowo-ckb"> 阅读并接受<a type="button" data-toggle="modal" data-target="#agreement" style="cursor: pointer;">蜗蜗在线《学生服务协议》</a></p>
         <p><input type="submit" value="注册" class="r-submit"></p>
         </form>

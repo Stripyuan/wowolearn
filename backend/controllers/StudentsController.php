@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\CurrencyForm;
 use backend\models\StudentsSearch;
+use backend\models\Users;
 use backend\models\VirtualCurrency;
 use Yii;
 use backend\models\Students;
@@ -105,7 +106,7 @@ class StudentsController extends Controller
     public function actionMDelete()
     {
         $post = Yii::$app->request->post();
-        if(Students::updateAll(['is_del' => 1],['in','id',$post['ids']])){
+        if(Users::updateAll(['is_del' => 1],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -117,7 +118,7 @@ class StudentsController extends Controller
      */
     public function actionMLock(){
         $post = Yii::$app->request->post();
-        if(Students::updateAll(['status' => Students::STATUS_LOCK ],['in','id',$post['ids']])){
+        if(Users::updateAll(['status' => Users::STATUS_LOCK ],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -128,7 +129,7 @@ class StudentsController extends Controller
      */
     public function actionMUnLock(){
         $post = Yii::$app->request->post();
-        if(Students::updateAll(['status' => Students::STATUS_ACTIVE ],['in','id',$post['ids']])){
+        if(Users::updateAll(['status' => Users::STATUS_ACTIVE ],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -143,7 +144,7 @@ class StudentsController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Students::findOne($id)) !== null) {
+        if (($model = Users::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -172,7 +173,7 @@ class StudentsController extends Controller
             Yii::$app->response->format = Response::FORMAT_HTML;
             return $this->render('currency', [
                 'model' => $model,
-                'student'   => Students::findOne($id)
+                'student'   => Users::findOne($id)
             ]);
         }
     }

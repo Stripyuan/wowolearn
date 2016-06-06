@@ -11,7 +11,7 @@ namespace backend\models;
 
 use yii\data\ActiveDataProvider;
 
-class StudentsSearch extends Students
+class StudentsSearch extends Users
 {
 	public $status = -1;
 	public function rules()
@@ -22,7 +22,7 @@ class StudentsSearch extends Students
 	}
 	public function search($params)
 	{
-		$query = Students::find();
+		$query = Users::find()->where(['role' => 'student']);
 
 		$dataProvider = new ActiveDataProvider([
 			'query' => $query,

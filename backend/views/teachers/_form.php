@@ -19,6 +19,8 @@ use jasmine2\dwz\helpers\ArrayHelper;
 
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'realname') ?>
+
     <?= $form->field($model, 'email') ?>
 
     <?= $form->field($model, 'introduction')->textarea(['show' => false,'rows' => 3]) ?>
@@ -26,15 +28,15 @@ use jasmine2\dwz\helpers\ArrayHelper;
     <?= $form->field($model, 'identity_number')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'is_school_teacher')->widget(\jasmine2\dwz\widgets\Combox::className(),[
-        'items' => \backend\models\Teachers::SCHOOL_TEACHER_LABELS
+        'items' => \backend\models\Users::SCHOOL_TEACHER_LABELS
     ]) ?>
     <?= $form->field($model, 'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
         'promptShow' => false,
-        'items' => \backend\models\Students::STATUS_LABELS
+        'items' => \backend\models\Users::STATUS_LABELS
     ]) ?>
 
     <?= $form->field($model, 'institution_id')->widget(\jasmine2\dwz\widgets\Combox::className(),[
-        'items' => ArrayHelper::map(\backend\models\Institutions::find()->all(),'id','name')
+        'items' => ArrayHelper::map(\backend\models\Users::find()->where(['role'=>'institution'])->all(),'id','name')
     ]) ?>
 
 

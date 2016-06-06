@@ -65,7 +65,7 @@ class AttentionTeacher extends \yii\db\ActiveRecord
      */
     public function getStudent()
     {
-        return $this->hasOne(Students::className(), ['id' => 'student_id']);
+        return $this->hasOne(Users::className(), ['id' => 'student_id']);
     }
 
     /**
@@ -73,6 +73,6 @@ class AttentionTeacher extends \yii\db\ActiveRecord
      */
     public function getTeacher()
     {
-        return $this->hasOne(Teachers::className(), ['id' => 'teacher_id']);
+        return $this->hasOne(Users::className(), ['id' => 'teacher_id']);
     }
 }

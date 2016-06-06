@@ -14,7 +14,7 @@ use frontend\models\User;
 
 class LoginForm extends Model
 {
-	public $username;
+	public $phone_number;
 	public $password;
 	public $role = 'student';
 	public $rememberMe = true;
@@ -28,7 +28,7 @@ class LoginForm extends Model
 	{
 		return [
 			// username and password are both required
-			[['username', 'password'], 'required'],
+			[['phone_number', 'password'], 'required'],
 			// rememberMe must be a boolean value
 			['rememberMe', 'boolean'],
 			// password is validated by validatePassword()
@@ -40,7 +40,7 @@ class LoginForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'username' => '用户名',
+			'phone_number' => '用户名',
 			'password' => '密 码',
 			'rememberMe' => '记住我的登录信息',
 		];
@@ -84,7 +84,7 @@ class LoginForm extends Model
 	protected function getUser()
 	{
 		if ($this->_user === null) {
-			$this->_user = User::findByUsername($this->username,$this->role);
+			$this->_user = Users::findByPhoneNumber($this->phone_number,$this->role);
 		}
 		return $this->_user;
 	}

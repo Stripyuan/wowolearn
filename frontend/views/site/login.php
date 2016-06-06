@@ -30,7 +30,7 @@ $this->title = "登录";
                 'teacher'   => '老师',
                 'institution'   => '机构',
             ])?>
-            <?= $form->field($model,'username')->textInput(['placeholder' => '用户名'])->label(false)?>
+            <?= $form->field($model,'phone_number')->textInput(['placeholder' => '请输入手机号码'])->label(false)?>
             <?= $form->field($model,'password')->passwordInput(['placeholder' => '密码'])->label(false)?>
             <?= $form->field($model,'rememberMe')->checkbox()?>
             <button type="submit">登 录</button>

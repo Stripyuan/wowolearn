@@ -2,15 +2,15 @@
 
 namespace backend\models;
 
+use backend\models\Users;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Institutions;
 
 /**
  * InstitutionsSearch represents the model behind the search form about `backend\models\Institutions`.
  */
-class InstitutionsSearch extends Institutions
+class InstitutionsSearch extends Users
 {
     public function init()
     {
@@ -47,7 +47,7 @@ class InstitutionsSearch extends Institutions
      */
     public function search($params)
     {
-        $query = Institutions::find();
+        $query = Users::find()->where(['role' => 'institution']);
 
         // add conditions that should always apply here
 

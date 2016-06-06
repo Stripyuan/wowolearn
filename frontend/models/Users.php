@@ -7,20 +7,36 @@ use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 use yii\base\NotSupportedException;
 /**
- * This is the model class for table "{{%user}}".
+ * This is the model class for table "{{%users}}".
  *
  * @property integer $id
- * @property integer $user_id
- * @property string $role
+ * @property string $username
  * @property string $password_hash
  * @property string $auth_key
  * @property string $password_reset_token
  * @property string $email
+ * @property string $phone_number
+ * @property string $role
  * @property integer $status
+ * @property string $qq
+ * @property string $wechat
+ * @property string $realname
+ * @property string $logo
+ * @property string $is_del
+ * @property string $identity_number
+ * @property integer $is_school_teacher
+ * @property string $teacher_certificate
+ * @property integer $institution_id
+ * @property string $introduction
+ * @property string $business_license
+ * @property string $tax_registration_number
+ * @property string $organization_code
+ * @property string $organization_code_img
+ * @property string $name
  * @property integer $created_at
  * @property integer $updated_at
  */
-class User extends \yii\db\ActiveRecord implements IdentityInterface
+class Users extends \yii\db\ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
@@ -29,30 +45,30 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%users}}';
     }
-    /**
-    * @inheritdoc
-    */
     public function behaviors()
     {
         return [
             TimestampBehavior::className(),
         ];
     }
-
     /**
      * @inheritdoc
      */
-    /*public function rules()
+    public function rules()
     {
         return [
-            [['user_id', 'role', 'password_hash', 'auth_key', 'created_at', 'updated_at'], 'required'],
-            [['user_id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['role'], 'string', 'max' => 45],
-            [['password_hash', 'auth_key', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['phone_number', 'role', 'organization_code_img'], 'required'],
+            [['status', 'is_school_teacher', 'institution_id', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'password_hash', 'auth_key', 'password_reset_token', 'email', 'role', 'wechat', 'realname', 'logo', 'is_del', 'teacher_certificate', 'business_license', 'tax_registration_number', 'organization_code', 'organization_code_img', 'name'], 'string', 'max' => 255],
+            [['phone_number'], 'string', 'max' => 11],
+            [['qq'], 'string', 'max' => 32],
+            [['identity_number'], 'string', 'max' => 18],
+            [['introduction'], 'string', 'max' => 1024],
+            [['phone_number', 'role'], 'unique', 'targetAttribute' => ['phone_number', 'role'], 'message' => 'The combination of Phone Number and Role has already been taken.'],
         ];
-    }*/
+    }
 
     /**
      * @inheritdoc
@@ -61,17 +77,34 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'role' => '身份',
-            'password_hash' => '密码',
-            'auth_key' => '授权KEY',
-            'password_reset_token' => '密码重置 Token',
+            'username' => 'Username',
+            'password_hash' => 'Password Hash',
+            'auth_key' => 'Auth Key',
+            'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
-            'status' => '状态',
-            'created_at' => '更新时间',
+            'phone_number' => 'Phone Number',
+            'role' => 'Role',
+            'status' => 'Status',
+            'qq' => 'Qq',
+            'wechat' => 'Wechat',
+            'realname' => 'Realname',
+            'logo' => 'Logo',
+            'is_del' => 'Is Del',
+            'identity_number' => 'Identity Number',
+            'is_school_teacher' => 'Is School Teacher',
+            'teacher_certificate' => 'Teacher Certificate',
+            'institution_id' => 'Institution ID',
+            'introduction' => 'Introduction',
+            'business_license' => 'Business License',
+            'tax_registration_number' => 'Tax Registration Number',
+            'organization_code' => 'Organization Code',
+            'organization_code_img' => 'Organization Code Img',
+            'name' => 'Name',
+            'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
+
     /**
      * @inheritdoc
      */
@@ -98,7 +131,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return static::findOne(['username' => $username,'role'=>$role, 'status' => self::STATUS_ACTIVE]);
     }
-
+    public static function findByPhoneNumber($phone,$role = 'student')
+    {
+        return static::findOne(['phone_number' => $phone,'role'=>$role, 'status' => self::STATUS_ACTIVE]);
+    }
     /**
      * Finds user by password reset token
      *
@@ -201,16 +237,5 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
-    }
-
-    public function getUserInformation(){
-        switch($this->role){
-            case 'student':
-                return Students::find()->where(['id' => $this->user_id])->one();
-            case 'teacher':
-                return Teachers::find()->where(['id' => $this->user_id])->one();
-            case 'institution':
-                return Institutions::find()->where(['id' => $this->user_id])->one();
-        }
     }
 }

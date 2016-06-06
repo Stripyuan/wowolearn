@@ -37,7 +37,7 @@ use jasmine2\dwz\widgets\SearchForm;
     <?php echo $form->field($model, 'name') ?>
 
     <?php echo $form->field($model, 'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
-        'items' => \backend\models\Institutions::STATUS_LABELS
+        'items' => \backend\models\Users::STATUS_LABELS
     ]) ?>
 
 

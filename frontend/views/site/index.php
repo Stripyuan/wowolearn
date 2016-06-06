@@ -167,3 +167,6 @@ $this->title = '蜗蜗在线教育';
             </div>
         </div>
     </div>
+
+
+    <?php var_dump(Yii::$app->user->identityClass) ?>

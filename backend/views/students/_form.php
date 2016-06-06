@@ -29,7 +29,7 @@ use jasmine2\dwz\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->widget(\jasmine2\dwz\widgets\Combox::className(),[
         'promptShow' => false,
-        'items' => \backend\models\Students::STATUS_LABELS
+        'items' => \backend\models\Users::STATUS_LABELS
     ]) ?>
     <div class="divider"></div>
     <h1>帮助信息</h1>

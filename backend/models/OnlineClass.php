@@ -188,7 +188,7 @@ class OnlineClass extends \yii\db\ActiveRecord
      */
     public function getStudents()
     {
-        return $this->hasMany(Students::className(), ['id' => 'student_id'])->viaTable('{{%attention_class}}', ['class_id' => 'id']);
+        return $this->hasMany(Users::className(), ['id' => 'student_id'])->viaTable('{{%attention_class}}', ['class_id' => 'id']);
     }
 
     /**
@@ -204,7 +204,7 @@ class OnlineClass extends \yii\db\ActiveRecord
      */
     public function getTeacher()
     {
-        return $this->hasOne(Teachers::className(), ['id' => 'teacher_id']);
+        return $this->hasOne(Users::className(), ['id' => 'teacher_id']);
     }
 
     /**

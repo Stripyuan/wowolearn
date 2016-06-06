@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\Users;
 use Yii;
-use backend\models\Institutions;
 use backend\models\InstitutionsSearch;
 use jasmine2\dwz\Controller;
 use yii\web\Response;
@@ -60,37 +60,6 @@ class InstitutionsController extends Controller
     }
 
     /**
-     * Creates a new Institutions model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Institutions();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if($model->save()){
-                return array_merge(self::SUCCESS,[
-                    'navTabId' => Yii::$app->request->post()['navTabId'],
-                    "callbackType"=>"closeCurrent",
-                ]);
-            } else {
-                $form_name = strtolower($model->formName());
-                $errors = $model->getErrors();
-                return array_merge(self::ERROR,[
-                    'form-name'   => $form_name,
-                    'errors' => $errors,
-                ]);
-            }
-        } else {
-            Yii::$app->response->format = Response::FORMAT_HTML;
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
      * Updates an existing Institutions model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -131,14 +100,14 @@ class InstitutionsController extends Controller
     public function actionMDelete()
     {
         $post = Yii::$app->request->post();
-        if(Institutions::updateAll(['is_del' => 1],['in','id',$post['ids']])){
+        if(Users::updateAll(['is_del' => 1],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
     }
     public function actionMLock(){
         $post = Yii::$app->request->post();
-        if(Institutions::updateAll(['status' => Institutions::STATUS_LOCK ],['in','id',$post['ids']])){
+        if(Users::updateAll(['status' => Users::STATUS_LOCK ],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -149,7 +118,7 @@ class InstitutionsController extends Controller
      */
     public function actionMUnLock(){
         $post = Yii::$app->request->post();
-        if(Institutions::updateAll(['status' => Institutions::STATUS_ACTIVE ],['in','id',$post['ids']])){
+        if(Users::updateAll(['status' => Users::STATUS_ACTIVE ],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -158,12 +127,12 @@ class InstitutionsController extends Controller
      * Finds the Institutions model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Institutions the loaded model
+     * @return Users the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Institutions::findOne($id)) !== null) {
+        if (($model = Users::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

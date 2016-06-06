@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\IntegralForm;
 use backend\models\Students;
+use backend\models\Users;
 use Yii;
 use backend\models\Teachers;
 use backend\models\TeachersSearch;
@@ -104,7 +105,7 @@ class TeachersController extends Controller
     public function actionMDelete()
     {
         $post = Yii::$app->request->post();
-        if(Teachers::updateAll(['is_del' => 1],['in','id',$post['ids']])){
+        if(Users::updateAll(['is_del' => 1],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -112,7 +113,7 @@ class TeachersController extends Controller
 
     public function actionMLock(){
         $post = Yii::$app->request->post();
-        if(Teachers::updateAll(['status' => Students::STATUS_LOCK ],['in','id',$post['ids']])){
+        if(Users::updateAll(['status' => Users::STATUS_LOCK ],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -123,7 +124,7 @@ class TeachersController extends Controller
      */
     public function actionMUnLock(){
         $post = Yii::$app->request->post();
-        if(Teachers::updateAll(['status' => Students::STATUS_ACTIVE ],['in','id',$post['ids']])){
+        if(Users::updateAll(['status' => Users::STATUS_ACTIVE ],['in','id',$post['ids']])){
             return self::SUCCESS;
         }
         return self::ERROR;
@@ -137,7 +138,7 @@ class TeachersController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Teachers::findOne($id)) !== null) {
+        if (($model = Users::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -164,7 +165,7 @@ class TeachersController extends Controller
             Yii::$app->response->format = Response::FORMAT_HTML;
             return $this->render('integral', [
                 'model' => $model,
-                'teacher'   => Teachers::findOne($id)
+                'teacher'   => Users::findOne($id)
             ]);
         }
     }

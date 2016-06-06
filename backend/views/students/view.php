@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h2 class="contentTitle">关注的老师</h2>
     <div class="divider"></div>
     <?php $teachers = new \yii\data\ArrayDataProvider([
-        'allModels' => $model->attentionTeachers
+        'allModels' => $model->attentionStudents
     ]); ?>
     <?= \jasmine2\dwz\grid\GridView::widget([
         'dataProvider'  => $teachers,

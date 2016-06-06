@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-05-31 09:06:36
+Date: 2016-06-06 16:36:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,7 +47,7 @@ CREATE TABLE `students` (
 -- ----------------------------
 -- Records of students
 -- ----------------------------
-INSERT INTO `students` VALUES ('1', 'wperez0', '3c943f4997c91730b8e5ad994044162d', 'bb546096c44682b9994e88bf838c85e2', '01a273aba1e70842eb67d872cfb77fd9', 'dwheeler0@acquirethisname.com', '13329660931', '914072006866119422', '0', '1403276239', '1464104039', '4344934114', '0828066642', '琪煜', null, '0');
+INSERT INTO `students` VALUES ('1', 'wpeasfd0', '$2y$13$ozKHKq7oDGiOIePgGJ7CceGVqNG1rpqhySo1k3UEoyKBMkZ0KtTVG', 'bb546096c44682b9994e88bf838c85e2', '01a273aba1e70842eb67d872cfb77fd9', 'dwheeler0@acquirethisname.com', '13329660931', '914072006866119422', '10', '1403276239', '1465134402', '4344934114', '0828066642', '琪煜', null, '0');
 INSERT INTO `students` VALUES ('2', 'acastillo1', '$2y$13$pQocIdMU.apORK7EHbentu.bzNM1NWCa1Shzhpfo4dm3RkeufIU0C', 'a1ac3987e00157b0204fa09115eff380', '7d8132eeacfafc3f0c8234d114ab3b2e', 'jalexander1@smh.com.au', '13886143022', '926154766557350879', '10', '1422720369', '1464595761', '6287682120', '8613066989', '鑫蕾', null, '0');
 INSERT INTO `students` VALUES ('3', 'jgarcia2', 'db9c2275416987d5300b90b0557ea598', '8fef84553ab99796f8b629e9b4509910', '9bd0bd396a2d5fb549762e9179b3a8b5', 'gsullivan2@hao123.com', '18099268298', '218287051197635666', '10', '1471530415', '1410645515', '7302827805', '5760662212', '静香', null, '0');
 INSERT INTO `students` VALUES ('4', 'jwoods3', '2fdea649ce2f80d312450313f1518521', '9ff955a367a22b7b362f8ef4e432de90', '6a2aebdd719a731cdb9e43e11d246d59', 'abennett3@eventbrite.com', '18532758081', '402494209831591367', '10', '1457710524', '1406571365', '1535847330', '5777257967', '展博', null, '0');
@@ -91,7 +91,7 @@ INSERT INTO `students` VALUES ('41', 'fstone14', 'a4dbf5db0cbb68e2acee389f57c3cb
 INSERT INTO `students` VALUES ('42', 'rwagner15', '828d91cff9207f15e9e9728466716a4b', '7346d253e823407170165cf9fd94e162', '1fd3bf46eb770705655fe62e7afddfd1', 'apayne15@bloomberg.com', '11769234919', '821346225095916528', '10', '1465065680', '1441179850', '6006030702', '4863568741', '俊誉', null, '0');
 INSERT INTO `students` VALUES ('43', 'bgibson16', '626582d0007298c898d4fb6a788f95e8', 'e488a168eb270253ae4077f89e78cfae', '811cd489a38cc1c18e06ec4dfc61e074', 'cwarren16@craigslist.org', '14249179797', '542098510010616561', '10', '1401946621', '1498354928', '4689049085', '2839403616', '美琳', null, '0');
 INSERT INTO `students` VALUES ('44', 'tsullivan17', '86b1273ffdfa91fd962229579476e318', '6b354d970663efb1eb82891c29552adc', '5ebb9eb04d5a6d571c06686220d70194', 'jjones17@scribd.com', '17813739913', '296809602172273825', '10', '1471485345', '1433179187', '3320609298', '4904250457', '梓彤', null, '0');
-INSERT INTO `students` VALUES ('45', 'lward18', 'ae79871d38f8f8cc35b845c86e4dbbdc', 'ffd1f77e53b64619d9436d431c70d249', 'ae2c3e1cc44b163019f5a1019507ac75', 'nhall18@shutterfly.com', '13258167776', '257141697175820094', '10', '1477313384', '1450783095', '9517234913', '9111428784', '佐仪', null, '0');
+INSERT INTO `students` VALUES ('45', 'lward18', 'ae79871d38f8f8cc35b845c86e4dbbdc', 'ffd1f77e53b64619d9436d431c70d249', 'ae2c3e1cc44b163019f5a1019507ac75', 'nhall18@shutterfly.com', '13258167776', '257141697175820094', '10', '1477313384', '1450783095', '9517234913', '9111428784', '佐仪', null, '1');
 INSERT INTO `students` VALUES ('46', 'mlane19', '018c0bb66c88828c8343a24e7de68816', '81ff3d66e8a0e76169678e290e23aa91', '227ae4b7b79a851e9f455faeb9219da1', 'dyoung19@usatoday.com', '11632791202', '596164698291383255', '10', '1417551790', '1417214714', '0552319135', '8960724601', '墨含', null, '0');
 INSERT INTO `students` VALUES ('47', 'aspencer1a', '50297ef6d51b7631cf4bbfda7efa2eb4', '5e3e98f2e70d9d45f66d7245087d8431', '2d11fb21a78e2e52ba408d3d3f8e3afc', 'cwilliamson1a@prweb.com', '15470885925', '425826395899244431', '10', '1468809961', '1402671822', '2504347317', '5005590347', '鑫蕾', null, '0');
 INSERT INTO `students` VALUES ('48', 'gchapman1b', '32b1edc7f32bdae37505ba92c530c478', 'a0a6ec56aa9f51d58b76c8882b05d093', 'f0e35b86e6f8a9007d1facb8165d5dee', 'avasquez1b@wired.com', '19049443789', '115106391926650377', '10', '1456059569', '1400896076', '6408423346', '9468367753', '美莲', null, '0');
@@ -1048,18 +1048,4 @@ INSERT INTO `students` VALUES ('998', 'jbryantrp', '1ab3fb2b1a67ff8326b0f8e54b57
 INSERT INTO `students` VALUES ('999', 'kfullerrq', '2ba894f6f6d8eade74b2f8b882810701', '7e381cd942a1d613eb098acbec3cfe77', 'ce091b2a90ce0d8847ab4506a2f7aa37', 'rbennettrq@pbs.org', '18830990807', '144141451213544461', '10', '1437305572', '1427106664', '0393079881', '5049025707', '韵寒', null, '0');
 INSERT INTO `students` VALUES ('1000', 'jalexanderrr', 'defc5b50557f31090a4e134289c2ad2c', '3f832092fad97853f0c630e69d9def0a', 'b90f056cbca818ca50a1f9646d7acf3b', 'aburtonrr@time.com', '15576746388', '393662864003181008', '10', '1478515493', '1476026902', '5229182245', '2317180195', '轩硕', null, '0');
 INSERT INTO `students` VALUES ('1001', 'wperez01', '3c943f4997c91730b8e5ad994044162d', 'bb546096c44682b9994e88bf838c85e2', '01a273aba1e70842eb67d872cfb77fd9', '123456789@acquirethisname.com', '13329660935', '914072006866119432', '10', '1403276239', '1464623314', '4344934114', '0828066642', '琪煜', null, '0');
-INSERT INTO `students` VALUES ('1002', 'asdfasdfadsf', '123', 'asdfffffffffffffffffffffff', 'gfffffffffffffffffffffffffffffff', 'teset@teatsa.com', '18993296144', '622727199004107136', '10', '140000000', '1464623449', '297403080', 'hy20111113', '尤敬强', null, '0');
-DROP TRIGGER IF EXISTS `students_AFTER_INSERT`;
-DELIMITER ;;
-CREATE TRIGGER `students_AFTER_INSERT` AFTER INSERT ON `students` FOR EACH ROW BEGIN
-INSERT INTO `user` (`user_id`, `role`, `password_hash`, `auth_key`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`,`username`) VALUES (new.id, 'student', new.password_hash,new.auth_key,new.password_reset_token,new.email,new.`status`,new.created_at,new.updated_at,new.username);
-END
-;;
-DELIMITER ;
-DROP TRIGGER IF EXISTS `students_BEFORE_UPDATE`;
-DELIMITER ;;
-CREATE TRIGGER `students_BEFORE_UPDATE` BEFORE UPDATE ON `students` FOR EACH ROW BEGIN
-UPDATE `user` set `password_hash`=new.password_hash,`auth_key`=new.auth_key,`password_reset_token`=new.password_reset_token,`email`=new.email,`status`=new.`status`,`created_at`=new.created_at,`updated_at`=new.updated_at where `user`.`user_id`=new.id and `user`.`role`='student';
-END
-;;
-DELIMITER ;
+INSERT INTO `students` VALUES ('1002', 'asdfasdfadsf', '123456', 'asdfffffffffffffffffffffff', 'gfffffffffffffffffffffffffffffff', 'teset@teatsa.com', '18993296144', '622727199004107136', '10', '140000000', '1464623449', '297403080', 'hy20111113', '尤敬强', null, '0');

@@ -73,6 +73,6 @@ class AttentionClass extends \yii\db\ActiveRecord
      */
     public function getStudent()
     {
-        return $this->hasOne(Students::className(), ['id' => 'student_id']);
+        return $this->hasOne(Users::className(), ['id' => 'student_id']);
     }
 }

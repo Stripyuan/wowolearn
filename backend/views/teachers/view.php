@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'teacher_certificate',
             'created_at:datetime',
             'updated_at:datetime',
-            'institution.name',
+            'institution0.name',
         ],
     ]) ?>
     <h2 class="contentTitle">积分操作明细</h2>
