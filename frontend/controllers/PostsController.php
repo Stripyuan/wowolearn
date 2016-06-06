@@ -50,6 +50,12 @@ class PostsController extends Controller
         $model->view_times += 1;
         $model->save();
         $category = CmsCategory::find()->where(['parent_id' => $model->category->parent_id])->all();
+        if(Yii::$app->request->isAjax){
+            return $this->renderAjax('view',[
+                'model' => $model,
+                'category'  => $category,
+            ]);
+        }
         return $this->render('view', [
             'model' => $model,
             'category'  => $category,

@@ -57,8 +57,14 @@ class OnlineIncomeController extends Controller
 			$begin = strtotime($date . " 00:00:00");
 			$data = Orders::find()->select('online_class.class_type,sum(orders.total_fee) as income')->where(['orders.status' => 2])->andWhere(['between','orders.created_at',$begin,$begin+86400])->leftJoin('online_class','orders.class_id=online_class.id')->groupBy(['online_class.class_type'])->asArray()->all();
 			$_data = [];
-			foreach($data as $item){
-				$_data[] = array_merge([$date],array_values($item));
+			if($data){
+				foreach($data as $item){
+					$_data[] = array_merge([$date],array_values($item));
+				}
+			} else {
+				for($i = 1;$i <=3;$i++){
+					$_data[] = [$date,$i,0];
+				}
 			}
 
 			Yii::$app->db->createCommand()->batchInsert('income',['date_time','type','income'],$_data)->execute();

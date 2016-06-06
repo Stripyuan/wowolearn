@@ -8,5 +8,5 @@ namespace common\services;
  */
 interface ShortMessageInterface
 {
-
+	public function send($phone,$message);
 }

@@ -65,4 +65,73 @@ $(document).ready(function() {
             return false;
         }
     });
+    $("#get-v-code").click(function(obj){
+        var code        = $(this);
+        var validCode   = true;
+        var phone_number = $("#signup-phone_number").val();
+        if (isEmpty(phone_number)) {
+            $(".field-signup-phone_number>span").html("手机号码不能为空");
+            $(".field-signup-phone_number>span").addClass("wowo-error");
+            $("#signup-phone_number").focus();
+            return false;
+        } else if (isTelPhone(phone_number)) {
+            $(".field-signup-phone_number>span").html("手机号码格式不正确");
+            $(".field-signup-phone_number>span").addClass("wowo-error");
+            $("#signup-phone_number").focus();
+            return false;
+        } else {
+            $(".field-signup-phone_number>span").html("请输入手机号码");
+            $(".field-signup-phone_number>span").removeClass("wowo-error");
+        }
+        $.post("/short-message",{
+            phone_number:$("#signup-phone_number").val()
+        },function(data){
+            if(data.error == '000'){
+                alert("验证码发送成功");
+            } else if(data.error == '001'){
+                alert("手机号码不能为空");
+            } else if(data.error == '002'){
+                alert("请不要重复发送，验证码尚在有效期内");
+            } else if(data.error == '003'){
+                alert("短信发送失败，请稍后再试");
+            }
+        });
+        code.attr('disabled','disabled');
+        var time = 120;
+        var t = setInterval(function(){
+            time--;
+            code.html(time +　" 秒");
+            if(time == 0){
+                clearInterval(t);
+                code.removeAttr('disabled');
+                code.html("重新获取");
+            }
+        },1000);
+    });
+    $("input[type='radio']").click(function(){
+        var role = $(this).val();
+        if(role == "student"){
+            $.get("http://front.wowolearn.com/posts/3.html",function(data){
+                $("#myModalLabel").html("蜗蜗在线《学生服务协议》");
+                $(".modal-body").html(data);
+            });
+            $(".agreement>a").html("蜗蜗在线《学生服务协议》");
+        } else if(role == "teacher"){
+            $.get("http://front.wowolearn.com/posts/4.html",function(data){
+                $("#myModalLabel").html("蜗蜗在线《老师服务协议》");
+                $(".modal-body").html(data);
+            });
+            $(".agreement>a").html("蜗蜗在线《老师服务协议》");
+        } else if(role == "institution"){
+            $.get("http://front.wowolearn.com/posts/5.html",function(data){
+                $("#myModalLabel").html("蜗蜗在线《机构服务协议》");
+                $(".modal-body").html(data);
+            });
+            $(".agreement>a").html("蜗蜗在线《机构服务协议》");
+        }
+    });
+    $.get("http://front.wowolearn.com/posts/3.html",function(data){
+        $("#myModalLabel").html("蜗蜗在线《学生服务协议》");
+        $(".modal-body").html(data);
+    });
 });

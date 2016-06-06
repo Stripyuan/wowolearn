@@ -51,6 +51,9 @@ return [
             'thousandSeparator' => ',',
             'currencyCode' => '¥',
         ],
+        'shortMessage' => [
+            'class'     => 'common\services\ShortMessage'
+        ],
     ],
     'params' => $params,
 ];

@@ -8,5 +8,8 @@ namespace common\services;
  */
 class ShortMessage implements ShortMessageInterface
 {
-
+	public function send($phone, $message)
+	{
+		return true;
+	}
 }

@@ -9,6 +9,7 @@ use yii\widgets\DetailView;
 $this->title = $model->title;
 ?>
 <hr>
+<?php if(!Yii::$app->request->isAjax): ?>
 <div class="cms-posts-view container">
     <div class="col-md-3">
         <div class="list-group">
@@ -50,3 +51,21 @@ $this->title = $model->title;
     </div>
 
 </div>
+<?php else: ?>
+    <h1 class="post-title"><?= Html::encode($this->title) ?></h1>
+    <?php if($model->summary):?>
+        <div class="post-summary">
+            <p><?= $model->summary ?></p>
+        </div>
+    <?php endif;?>
+    <div class="post-content">
+        <?= $model->content ?>
+    </div>
+    <hr>
+    <div class="row" style="padding: 0 15px;margin-bottom: 15px;">
+        <label class="label label-success">分类：<?= $model->category->name?></label>
+        <label class="label label-info">浏览次数：<?= $model->view_times?></label>
+        <label class="label label-primary"><i>更新于：<?= Yii::$app->formatter->asDatetime($model->updated_at)?></i></label>
+    </div>
+
+<?php endif; ?>

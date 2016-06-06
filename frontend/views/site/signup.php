@@ -37,15 +37,15 @@ $this->title = '注册';
             <span> 请输入8-16位数字、大写字母和小写字母的组合</span>
         </p>
         <p class="clr">身　份：
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="identity" value="student" checked="checked"> 学生</label>
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="identity" value="teacher"> 老师</label>
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="identity" value="institution"> 机构</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="student" checked="checked"> 学生</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="teacher"> 老师</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="institution"> 机构</label>
         </p>
         <p class="field-signup-v_code required">验证码：
             <input type="text" id="signup-v_code" class="wowo-yzm" name="SignUp[v_code]" placeholder="验证码">
-            <button>获取短信验证码</button>
+            <button type="button" id="get-v-code">获取短信验证码</button>
             <span class="">输入手机验证码</span></p>
-        <p class="agreement"><input id="accept-deal" type="checkbox" checked="checked" class="wowo-ckb"> 阅读并接受<a href="xx">《窝窝用户协议》</a></p>
+        <p class="agreement"><input id="accept-deal" type="checkbox" checked="checked" class="wowo-ckb"> 阅读并接受<a type="button" data-toggle="modal" data-target="#agreement" style="cursor: pointer;">蜗蜗在线《学生服务协议》</a></p>
         <p><input type="submit" value="注册" class="r-submit"></p>
         </form>
     </div>
@@ -64,3 +64,21 @@ $this->title = '注册';
 <?php
 $this->registerJsFile("/statics/js/signup.js",['depends' => 'yii\web\JqueryAsset']);
 ?>
+
+<!-- Modal -->
+<div class="modal fade" id="agreement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
