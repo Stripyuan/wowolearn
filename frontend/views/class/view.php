@@ -65,7 +65,8 @@ $this->title = $model->class_name;
                 </ul>
                 <a href="login.html" class="btn btn-danger">立即报名</a>
                 <a href="online.html" class="btn btn-warning">进入直播间</a>
-                <a class="pull-right" href="<?= Url::to(['class/like','id' => $model->class_code])?>"><span class="glyphicon glyphicon-heart "></span>关注</a>
+                <a class="pull-right" href="<?= Url::to(['class/like','id' => $model->class_code])?>">
+                <span class="glyphicon glyphicon-heart " style="top:2px;"></span> 关注</a>
             </div>
 
         </div>
