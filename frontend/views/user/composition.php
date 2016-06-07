@@ -33,6 +33,7 @@ $this->title = "我的作文";
 					</div>
 				</div>				
                	<div class="col-md-9">
+               		<div class="wowo-level-title"><strong style="font-size: 16px;">我的作文</strong><a href="#" class="pull-right">写作文</a></div>
                		<ol>
                			<li><a href="x">第一篇作文</a><em class="pull-right">2016-06-07</em></li>
                			<li><a href="x">第二篇作文</a><em class="pull-right">2016-06-07</em></li>

@@ -33,6 +33,7 @@ $this->title = "我的直播";
 					</div>
 				</div>				
                 <div class="col-md-9">
+                	<div class="wowo-level-title"><strong style="font-size: 16px;">我的直播</strong></div>
 					<div class="col-md-3 list-item">
 	                    <div class="class-img">
 	                        <a href="<?= Url::to(['site/class']);?>"><img src="http://web.img.chuanke.com/course/2014-06/29/02f2aed0e9c648705334e61795e714eb.jpg" alt="" class="img-responsive"></a>

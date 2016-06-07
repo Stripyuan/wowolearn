@@ -600,6 +600,13 @@ div.post-content{
     text-indent: 2em;
   }
 }
-
+div.wowo-level-title{
+  border-bottom: 1px dotted #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  strong{
+    color: #fc6238;
+  }
+}
 
 @import "styles";

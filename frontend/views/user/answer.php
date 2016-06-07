@@ -33,6 +33,7 @@ $this->title = "我的问答";
 					</div>
 				</div>				
                	<div class="col-md-9">
+               		<div class="wowo-level-title"><strong style="font-size: 16px;">我的问答</strong><a href="#" class="pull-right">去提问</a></div>
                		<ol>
                			<li><strong>Q:</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 							<p>
