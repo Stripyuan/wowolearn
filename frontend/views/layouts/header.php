@@ -9,11 +9,11 @@ use yii\helpers\Url;
 ?>
 <div class="bg"></div>
 <!-- 导航条 -->
-<div class="logo-nav-itp container">
+<div class="logo-nav-itp container ">
     <div class="logo">
         <h1><a href="./">窝窝教育</a></h1>
     </div>
-    <div class="nav">
+    <div class="nav hidden-xs">
         <ul>
             <li class="active"><a href="/">首页</a></li>
             <li><a href="">作业直播</a></li>
@@ -23,7 +23,7 @@ use yii\helpers\Url;
             <li><a href="">教案文档</a></li>
         </ul>
     </div>
-    <div class="itp">
+    <div class="itp hidden-xs">
         <form class="form-inline navbar-form">
             <input class="form-control" type="text" placeholder="请输入课程名称或学科">
             <button class="btn btn-success" type="submit">搜 索</button>

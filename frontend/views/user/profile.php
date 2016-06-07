@@ -49,7 +49,7 @@ $this->title = "个人中心";
 						<p>您的信息<span class="pull-right"><a href="">编辑</a></span></p>
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<th>用户名：</th>
+								<th>用 户 名 ：</th>
 								<td>测试用户</td>
 							</tr>
 							<tr>
@@ -61,19 +61,19 @@ $this->title = "个人中心";
 								<td>620421199012250607</td>
 							</tr>
 							<tr>
-								<th>QQ号：</th>
+								<th>Q Q　号：</th>
 								<td>123456789</td>
 							</tr>
 							<tr>
-								<th>微信号：</th>
+								<th>微 信 号 ：</th>
 								<td>ceshi123</td>
 							</tr>
 							<tr>
-								<th>头像图：</th>
+								<th>头 像 图 ：</th>
 								<td><img src="/images/images.png"></td>
 							</tr>
 							<tr>
-								<th>金币：</th>
+								<th>金　　币：</th>
 								<td>123个</td>
 							</tr>
 						</table>

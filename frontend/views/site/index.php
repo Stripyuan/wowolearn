@@ -7,7 +7,7 @@ $this->title = '蜗蜗在线教育';
 ?>
 
 <!-- 焦点图 -->
-<div class="container-fluid focus-map">
+<div class="container-fluid focus-map hidden-xs">
     <div id="focus-map" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators wowo-dian">

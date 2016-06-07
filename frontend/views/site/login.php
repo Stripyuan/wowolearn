@@ -19,7 +19,7 @@ $this->title = "登录";
 <div class="content login">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-6 hidden-xs">
                 <img src="/images/wowo.png" alt="窝窝教育" class="img-responsive center-block" style="padding-top:20px;">
             </div>
             <div class="col-xs-6">
