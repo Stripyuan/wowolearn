@@ -65,6 +65,7 @@ $this->title = $model->class_name;
                 </ul>
                 <a href="login.html" class="btn btn-danger">立即报名</a>
                 <a href="online.html" class="btn btn-warning">进入直播间</a>
+                <a class="pull-right" href="<?= Url::to(['class/like','id' => $model->class_code])?>"><span class="glyphicon glyphicon-heart "></span>关注</a>
             </div>
 
         </div>
@@ -77,6 +78,9 @@ $this->title = $model->class_name;
                     <li class="nav-item">
                         <a class="nav-link" href="#qita" role="tab" data-toggle="tab">章节信息</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wenda" role="tab" data-toggle="tab">在线问答</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="jianjie">
@@ -85,7 +89,31 @@ $this->title = $model->class_name;
 
                     <div class="tab-pane" role="tabpanel" id="qita">
                         <div class="clearfix"></div>
-                        <h1>其他</h1>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>章节</th>
+                                    <th>直播时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                foreach($model->chapters as $item):?>
+                                    <tr>
+                                        <td><?= $i?></td>
+                                        <td><?= $item->chapter_name?></td>
+                                        <td><?= $item->online_time?></td>
+                                    </tr>
+                                <?php
+                                $i++;
+                                endforeach;?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="wenda">
+
                     </div>
                 </div>
             </div>

@@ -47,9 +47,9 @@ $this->title = '注册';
             <?php endif; ?>
         </p>
         <p class="clr">身　份：
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="student" <?= $model->identity == "student"?'checked="checked"':""?>> 学生</label>
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="teacher" <?= $model->identity == "teacher"?'checked="checked"':""?>> 老师</label>
-            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[identity]" value="institution" <?= $model->identity == "institution"?'checked="checked"':""?>> 机构</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[role]" value="student" <?= $model->role == "student"?'checked="checked"':""?>> 学生</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[role]" value="teacher" <?= $model->role == "teacher"?'checked="checked"':""?>> 老师</label>
+            <label class="wowo-radio"><input type="radio" class="wowo-ckb" name="SignUp[role]" value="institution" <?= $model->role == "institution"?'checked="checked"':""?>> 机构</label>
         </p>
         <p class="field-signup-v_code required">验证码：
             <input type="text" id="signup-v_code" class="wowo-yzm" name="SignUp[v_code]" placeholder="验证码" value="<?= $model->v_code?>">

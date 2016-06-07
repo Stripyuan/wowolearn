@@ -165,11 +165,10 @@ class SiteController extends Controller
         $model = new SignUp();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                //
-                /*if (Yii::$app->getUser()->login($user)) {
+                if (Yii::$app->getUser()->login($user)) {
+                    // 跳转到完善信息页面
                     return $this->goHome();
-                }*/
-                var_dump($user);
+                }
             }
         }
 

@@ -2,9 +2,11 @@
 
 namespace frontend\controllers;
 
+use frontend\models\AttentionClass;
 use Yii;
 use frontend\models\OnlineClass;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +22,17 @@ class ClassController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only'  => ['like'],
+                'rules' => [
+                    [
+                        'actions'   => ['like'],
+                        'allow' => true,
+                        'roles'  => ['@']
+                    ]
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -74,6 +87,19 @@ class ClassController extends Controller
         }
     }
 
+    public function actionLike($id){
+        $class = $this->findModel($id);
+        $attention = AttentionClass::find()->where(['student_id' => Yii::$app->user->identity->id,'class_id' => $class->id])->one();
+        if($attention){
+            $attention->delete();
+        } else {
+            $attention = new AttentionClass();
+            $attention->student_id = Yii::$app->user->identity->getId();
+            $attention->class_id   = $class->id;
+            $attention->save();
+        }
+        return $this->redirect(['view','id' => $id]);
+    }
     /**
      * Updates an existing OnlineClass model.
      * If update is successful, the browser will be redirected to the 'view' page.

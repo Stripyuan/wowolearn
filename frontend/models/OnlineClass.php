@@ -196,4 +196,11 @@ class OnlineClass extends \yii\db\ActiveRecord
     public static function findByClassCode($code){
         return static::find()->where(['class_code' => $code])->one();
     }
+
+    /**
+     * 判断当前用户是否关注了此课程
+     */
+    public function getCurrentUserLike(){
+
+    }
 }

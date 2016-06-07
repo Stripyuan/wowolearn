@@ -59,7 +59,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['phone_number', 'role', 'organization_code_img'], 'required'],
+            [['phone_number', 'role','password_hash'], 'required'],
             [['status', 'is_school_teacher', 'institution_id', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password_hash', 'auth_key', 'password_reset_token', 'email', 'role', 'wechat', 'realname', 'logo', 'is_del', 'teacher_certificate', 'business_license', 'tax_registration_number', 'organization_code', 'organization_code_img', 'name'], 'string', 'max' => 255],
             [['phone_number'], 'string', 'max' => 11],
