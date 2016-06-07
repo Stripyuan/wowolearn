@@ -488,7 +488,7 @@ div.dropdown{
   }
 }
 div.login-page {
-  width: 480px;
+  max-width: 480px;
   padding: 15px 0 0;
   margin: auto;
   .form {
@@ -518,7 +518,7 @@ div.login-page {
       font-family: "Roboto", sans-serif;
       outline: 0;
       background: #f2f2f2;
-      width: 100%;
+      //width: 100%;
       border: 0;
       margin: 0 0 15px;
       box-sizing: border-box;
@@ -566,10 +566,11 @@ div.login-page {
       cursor: pointer;
       font-size: 12px;
     }
-    .field-loginform-rememberme> label> input[type=checkbox]{
-      text-align: left;
+    .field-loginform-rememberme
+     label> input[type=checkbox]{
+       text-align: left;
       position: absolute;
-      left: -186px;
+      left: 45px;
       margin-top: 3px;
     }
   }

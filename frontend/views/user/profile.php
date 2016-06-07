@@ -35,7 +35,7 @@ $this->title = "个人中心";
 					</div>
 				</div>
 				<div class="col-md-9">
-					<div class="no-data register" style="padding:0;display: none;">
+					<div class="no-data register" style="padding:0;">
 						<p class="wowo-xinxi" style="margin-bottom: 0px;">请完善您的信息</p>
 						<p>昵　　称：<input type="text" placeholder="用户名"></p>
 						<p>真实姓名：<input type="text" placeholder="真实姓名"><span> 请输入真实姓名</span></p>
@@ -45,7 +45,7 @@ $this->title = "个人中心";
 						<p>Q Q　号：<input type="text" placeholder="QQ号"><span> 请输入您的QQ号</span></p>
 						<p>微 信 号 ：<input type="text" placeholder="微信"><span> 请输入您的微信</span></p>
 					</div>
-					<div class="wowo-user-inf">
+					<div class="wowo-user-inf" style="display: none;">
 						<p>您的信息<span class="pull-right"><a href="">编辑</a></span></p>
 						<table cellpadding="0" cellspacing="0">
 							<tr>

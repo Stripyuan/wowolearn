@@ -19,10 +19,10 @@ $this->title = "登录";
 <div class="content login">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6 hidden-xs">
+            <div class="col-md-6 hidden-xs">
                 <img src="/images/wowo.png" alt="窝窝教育" class="img-responsive center-block" style="padding-top:20px;">
             </div>
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <div class="login-page">
                     <?php $form = ActiveForm::begin(['method' => 'post','options' => ['class' => 'form']])?>
                     <p class="message pull-right">没有账号？<a href="<?= Url::to(['site/signup'])?>">立即注册</a></p>

@@ -7,7 +7,7 @@
  */
 ?>
 <div class="container">
-	<div class="col-md-3">
+	<div class="col-md-3 col-xs-6">
 		<ul>
 			<h6>使用帮助</h6>
 			<li><a href="">平台功能简介</a></li>
@@ -15,7 +15,7 @@
 			<li><a href="">收费标准</a></li>
 		</ul>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-3 col-xs-6">
 		<ul>
 			<h6>收费标准</h6>
 			<li><a href="">平台功能简介</a></li>
@@ -23,7 +23,7 @@
 			<li><a href="">收费标准</a></li>
 		</ul>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-3 col-xs-6">
 		<ul>
 			<h6>友情链接</h6>
 			<?php $links = \frontend\models\Links::find()->orderBy(['created_at' => SORT_DESC])->limit(4)->all(); ?>
@@ -34,7 +34,7 @@
 			<?php endif;?>
 		</ul>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-3 col-sm-6">
 		<ul>
 			<h6>二维码</h6>
 			<img src="/images/images.png" alt="">
