@@ -8,3 +8,17 @@
 	color: red;
 	font-size: 18px;
 }
+.wowo-user-inf{
+	display: block;
+	overflow: hidden;
+}
+.wowo-user-inf table{
+	width: 100%;
+}
+.wowo-user-inf table tr{
+	width: 100%;
+	height: 50px;
+	text-indent:60px;
+	border-bottom: 1px solid #CCC;
+}
+}
