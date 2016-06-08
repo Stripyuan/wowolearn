@@ -610,9 +610,18 @@ div.wowo-level-title{
 }
 div.wowo-profile{
   ol{
+      margin-left: 0;
+      padding-left: 10px;
     li{
       height: 25px;
       line-height: 25px;
+      border-bottom: 1px dotted #999;
+      overflow: hidden;
+      display: block;
+      em{
+        font-size: 13px;
+        color: #EE7600;
+      }
     }
   }
 }

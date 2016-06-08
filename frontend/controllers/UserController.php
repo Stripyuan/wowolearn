@@ -23,4 +23,7 @@ class UserController extends \yii\web\Controller
     public function actionTask(){
     	return $this->render('task');
     }
+    public function actionFollowc(){
+        return $this->render('followc');
+    }
 }

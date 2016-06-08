@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
-$this->title = "我的问答";
+$this->title = "我关注的课程";
 ?>	
 	<div class="content" style="background:#FFF;">
 		<div class="container profile" style="background:#FFF;">
@@ -29,8 +29,8 @@ $this->title = "我的问答";
 					  <a href="#" class="list-group-item">我的视频</a>
 					  <a href="#" class="list-group-item">我的问答</a>
 					  <a href="#" class="list-group-item">我的作文</a>
-					  <a href="#" class="list-group-item" style="background: #f0ad4e; color: #fff; border: 1px solid #f0ad4e;">我的作业</a>
-					  <a href="#" class="list-group-item">我关注的课程</a>
+					  <a href="#" class="list-group-item">我的作业</a>
+					  <a href="#" class="list-group-item" style="background: #f0ad4e; color: #fff; border: 1px solid #f0ad4e;">我关注的课程</a>
 					  <a href="#" class="list-group-item">我关注的老师</a>				
 					  <a href="#" class="list-group-item">我要学习</a>
 					  <a href="#" class="list-group-item">我的订单</a>					  
@@ -38,38 +38,21 @@ $this->title = "我的问答";
 					</div>
 				</div>				
                	<div class="col-md-9">
-               		<div class="wowo-level-title"><strong style="font-size: 16px;">我的问答案</strong></div>
+               		<div class="wowo-level-title"><strong style="font-size: 16px;">我的作文</strong><a href="#" class="pull-right">写作文</a></div>
                		<ol>
-               			<li><strong>Q:</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-							<p>
-								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
-							</p>
-							<p>
-								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
-							</p>
-							<p>
-								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
-							</p>
-               			</li>
-               			<li><strong>Q:</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-							<p>
-								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
-							</p>
-               			</li>
-               			<li><strong>Q:</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-							<p>
-								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
-							</p>
-               			</li>
-               			<li><strong>Q:</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-							<p>
-								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
-							</p>
-               			</li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
                		</ol>
                	</div>
-               	 <!-- 分页 -->
-	            <div class="wowo-tcdPageCode"></div>
+               	<div class="wowo-tcdPageCode"></div>
 			</div>
 		</div>
 	</div>
