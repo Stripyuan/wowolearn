@@ -27,15 +27,26 @@ $this->title = "我的问答";
 					  <a href="#" class="list-group-item active">个人中心</a>
 					  <a href="#" class="list-group-item">我的直播</a>
 					  <a href="#" class="list-group-item">我的视频</a>
-					  <a href="#" class="list-group-item" style="background: #f0ad4e; color: #fff; border: 1px solid #f0ad4e;">我的问答</a>
+					  <a href="#" class="list-group-item">我的问答</a>
 					  <a href="#" class="list-group-item">我的作文</a>
-					  <a href="#" class="list-group-item">我的作业</a>
+					  <a href="#" class="list-group-item" style="background: #f0ad4e; color: #fff; border: 1px solid #f0ad4e;">我的作业</a>
+					  <a href="#" class="list-group-item">我关注的课程</a>
+					  <a href="#" class="list-group-item">我关注的老师</a>				
+					  <a href="#" class="list-group-item">我要学习</a>
+					  <a href="#" class="list-group-item">我的订单</a>					  
+					  <a href="#" class="list-group-item">我要充值</a>
 					</div>
 				</div>				
                	<div class="col-md-9">
-               		<div class="wowo-level-title"><strong style="font-size: 16px;">我的问答</strong><a href="#" class="pull-right">去提问</a></div>
+               		<div class="wowo-level-title"><strong style="font-size: 16px;">我的问答案</strong></div>
                		<ol>
                			<li><strong>Q:</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+							<p>
+								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
+							</p>
+							<p>
+								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
+							</p>
 							<p>
 								<strong>A:</strong> Aliquam tincidunt mauris eu risus.
 							</p>

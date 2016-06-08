@@ -28,8 +28,13 @@ $this->title = "我的作文";
 					  <a href="#" class="list-group-item">我的直播</a>
 					  <a href="#" class="list-group-item">我的视频</a>
 					  <a href="#" class="list-group-item">我的问答</a>
-					  <a href="#" class="list-group-item" style="background: #f0ad4e; color: #fff; border: 1px solid #f0ad4e;">我的作文</a>
-					  <a href="#" class="list-group-item">我的作业</a>
+					  <a href="#" class="list-group-item">我的作文</a>
+					  <a href="#" class="list-group-item" style="background: #f0ad4e; color: #fff; border: 1px solid #f0ad4e;">我的作业</a>
+					  <a href="#" class="list-group-item">我关注的课程</a>
+					  <a href="#" class="list-group-item">我关注的老师</a>				
+					  <a href="#" class="list-group-item">我要学习</a>
+					  <a href="#" class="list-group-item">我的订单</a>					  
+					  <a href="#" class="list-group-item">我要充值</a>
 					</div>
 				</div>				
                	<div class="col-md-9">
@@ -38,8 +43,29 @@ $this->title = "我的作文";
                			<li><a href="x">第一篇作文</a><em class="pull-right">2016-06-07</em></li>
                			<li><a href="x">第二篇作文</a><em class="pull-right">2016-06-07</em></li>
                			<li><a href="x">第三篇作文</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">第一篇作文</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">第二篇作文</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">第三篇作文</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">第一篇作文</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">第二篇作文</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">第三篇作文</a><em class="pull-right">2016-06-07</em></li>
+               			<li><a href="x">第一篇作文</a><em class="pull-right">2016-06-07</em></li>
                		</ol>
                	</div>
+               	<div class="wowo-tcdPageCode"></div>
 			</div>
 		</div>
 	</div>
+<?php
+$this->registerJsFile("/statics/js/page.js",['depends' => 'yii\web\JqueryAsset']);
+$js = <<<EOF
+    $(".wowo-tcdPageCode").createPage({
+        pageCount:10,
+        current:1,
+        backFn:function(p){
+            console.log(p);
+        }
+    });
+EOF;
+$this->registerJs($js);
+?>

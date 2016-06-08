@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
-$this->title = "我的作文";
+$this->title = "我的作业";
 ?>	
 	<div class="content" style="background:#FFF;">
 		<div class="container profile" style="background:#FFF;">
@@ -30,16 +30,35 @@ $this->title = "我的作文";
 					  <a href="#" class="list-group-item">我的问答</a>
 					  <a href="#" class="list-group-item">我的作文</a>
 					  <a href="#" class="list-group-item" style="background: #f0ad4e; color: #fff; border: 1px solid #f0ad4e;">我的作业</a>
+					  <a href="#" class="list-group-item">我关注的课程</a>
+					  <a href="#" class="list-group-item">我关注的老师</a>				
+					  <a href="#" class="list-group-item">我要学习</a>
+					  <a href="#" class="list-group-item">我的订单</a>					  
+					  <a href="#" class="list-group-item">我要充值</a>
 					</div>
 				</div>				
                	<div class="col-md-9">
-               	<div class="wowo-level-title"><strong style="font-size: 16px;">我的作文</strong><a href="#" class="pull-right">写作业</a></div>
+               	<div class="wowo-level-title"><strong style="font-size: 16px;">我的作业</strong><a href="#" class="pull-right">写作业</a></div>
                		<ol>
                			<li><a href="x">语文作业</a><em class="pull-right">2016-06-07</em></li>
                			<li><a href="x">数学作业</a><em class="pull-right">2016-06-07</em></li>
                			<li><a href="x">英语作业</a><em class="pull-right">2016-06-07</em></li>
                		</ol>
                	</div>
+               	<div class="wowo-tcdPageCode"></div>
 			</div>
 		</div>
 	</div>
+<?php
+$this->registerJsFile("/statics/js/page.js",['depends' => 'yii\web\JqueryAsset']);
+$js = <<<EOF
+    $(".wowo-tcdPageCode").createPage({
+        pageCount:10,
+        current:1,
+        backFn:function(p){
+            console.log(p);
+        }
+    });
+EOF;
+$this->registerJs($js);
+?>
