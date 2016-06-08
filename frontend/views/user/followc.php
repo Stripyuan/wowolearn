@@ -38,7 +38,7 @@ $this->title = "我关注的课程";
 					</div>
 				</div>				
                	<div class="col-md-9">
-               		<div class="wowo-level-title"><strong style="font-size: 16px;">我的作文</strong><a href="#" class="pull-right">写作文</a></div>
+               		<div class="wowo-level-title"><strong style="font-size: 16px;">我关注的课程</strong><a href="#" class="pull-right">写作文</a></div>
                		<ol>
                			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>
                			<li><a href="x">PS教程最新版</a><em class="pull-right">2016-06-07</em></li>

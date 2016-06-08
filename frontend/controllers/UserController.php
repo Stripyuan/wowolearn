@@ -26,4 +26,7 @@ class UserController extends \yii\web\Controller
     public function actionFollowc(){
         return $this->render('followc');
     }
+    public function actionFollowt(){
+        return $this->render('followt');
+    }
 }

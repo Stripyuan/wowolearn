@@ -601,7 +601,7 @@ div.post-content{
   }
 }
 div.wowo-level-title{
-  border-bottom: 1px dotted #ccc;
+  border-bottom: 2px solid #ccc;
   padding: 5px;
   margin-bottom: 10px;
   strong{
@@ -612,16 +612,51 @@ div.wowo-profile{
   ol{
       margin-left: 0;
       padding-left: 10px;
+      padding-top: 1px;
     li{
-      height: 25px;
-      line-height: 25px;
+      height: 20px;
+      line-height: 20px;
+      margin-top: 8px;
       border-bottom: 1px dotted #999;
-      overflow: hidden;
-      display: block;
       em{
         font-size: 13px;
         color: #EE7600;
+        display: inline;
       }
+    }
+  }
+}
+div.wowo-followt{
+  width: 180px;
+  height: 220px;
+  padding-right: 0;
+  display: block;
+  overflow: hidden;
+  padding-left: 0;
+  text-align: center;
+  background: #eee;
+  margin: 0 10px 20px 10px;
+  h3{
+      font-size: 18px;
+    }
+  a{   
+    margin-left: auto;
+    margin-right: auto;
+    img{
+      margin-top: 8px;
+      width: 80px;
+    }
+  }
+  p{
+    width: 180px;
+    height: 80px;
+    text-align: left;
+    background: #ddd;
+    border-top: 1px dotted #bbb;
+    color: #666;
+    span{
+      color: #fc6238;
+      font-size: 16px;
     }
   }
 }
